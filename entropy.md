@@ -23,9 +23,9 @@ Let's make sense of this. Picture a $y = - \log(x)$ graph, $(0 \leq x \leq 1)$. 
 
 ## which leads us back to entropy:
 
-Entropy is a measure of the expected information content of a random variable. In other words, it is a measure of how *surprising* the average outcome of a random variable is. 
+Entropy is a measure of the expected information content of a random variable. In other words, it is a measure of how surprising the average outcome of a random variable is. 
 
-Something surprising has high entropy, and something expected has low entropy. It's about the level of uncertainty. And, in line with the definition from statistical mechanics, the disgree of disorder.
+Something surprising has high entropy, and something expected has low entropy. You could say that it's about the level of uncertainty. And, in line with the definition of entropy from statistical mechanics, the disgree of disorder.
 
 To calculate the value of entropy, we sum up all information content with a weight equals to its occurence frequency:
 
