@@ -2,9 +2,9 @@
 
 von Neumann advised Shannon to name his newly devised quantity "Shannon entropy" since no one knows what entropy is, so Shannon would always have an edge in any discussion. 
 
-ok, but what *is* entropy?
+Interesting anecdote aside, it's gotta mean *something*. So what *is* entropy?
 
-quick answer: the degree of disorder
+Short answer: the degree of disorder.
 
 But, I must admit, that definition is good for reminding ourselves what entropy is, but not so much for learning what it is. To do that, let's start from the (Shannon's) definition of information.
 
