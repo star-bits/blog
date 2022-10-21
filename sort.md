@@ -74,7 +74,7 @@ insertionsort(l)
 print(l)
 ```
 
-### Merge sort: merging two sorted lists, over and over
+## Merge sort: merging two sorted lists, over and over
 
 $O(n \log n)$
 
@@ -111,7 +111,7 @@ l = mergesort(l)
 print(l)
 ```
 
-### Quick sort: pivot 골라서 pivot보다 작으면 왼쪽, 크면 오른쪽
+## Quick sort: pivot 골라서 pivot보다 작으면 왼쪽, 크면 오른쪽
 
 Worst: $O(n^2)$, Average: $O(n \log n)$, Best: $O(n \log n)$
 
@@ -151,7 +151,7 @@ i=0            ->1->2            ->3            ->4->5
 j=0->2713654->1      ->2173654->2   ->2137654->3      ->2134657
 ```
 
-### Heap sort
+## Heap sort
 
 $O(n \log n)$
 
@@ -159,7 +159,7 @@ $O(n \log n)$
 
 ```
 
-### Counting sort: `count[l[i]]-1`은 `l[i]`이 위치할 수 있는 최대 인덱스
+## Counting sort: `count[l[i]]-1`은 `l[i]`이 위치할 수 있는 최대 인덱스
 
 $O(n+k)$
 
@@ -191,7 +191,7 @@ l = countingsort(l)
 print(l)
 ```
 
-### Radix sort: decimal place 올려가면서 `l`->`buckets`, `buckets`->`l`
+## Radix sort: decimal place 올려가면서 `l`->`buckets`, `buckets`->`l`
 
 $O(d*(n+k))$
 
