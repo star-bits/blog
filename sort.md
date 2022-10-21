@@ -191,7 +191,7 @@ l = countingsort(l)
 print(l)
 ```
 
-### Radix sort: decimal place 올려가면서 `l`->`buckets[(i//decimal)%10]`, `bucket`->`l`
+### Radix sort: decimal place 올려가면서 `l`->`buckets`, `buckets`->`l`
 
 $O(d*(n+k))$
 
