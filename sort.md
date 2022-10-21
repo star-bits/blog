@@ -159,7 +159,7 @@ $O(n \log n)$
 
 ```
 
-### Counting sort: count[l[i]]-1은 l[i]이 위치할 수 있는 최대 인덱스
+### Counting sort: `count[l[i]]-1`은 `l[i]`이 위치할 수 있는 최대 인덱스
 
 $O(n+k)$
 
@@ -191,7 +191,7 @@ l = countingsort(l)
 print(l)
 ```
 
-### Radix sort: decimal place 올려가면서 lq->buckets, buckets->lq
+### Radix sort: decimal place 올려가면서 `l`->`buckets[(i//decimal)%10]`, `bucket`->`l`
 
 $O(d*(n+k))$
 
@@ -199,30 +199,25 @@ $O(d*(n+k))$
 l = [152, 73, 69, 41, 28, 1247, 2, 33, 674, 388]
 print(l)
 
-from collections import deque
-
 def radixsort(l):
-    # 해당 digit의 숫자(0-9)에 따라 담아놓을 deque들
-    buckets = [deque() for _ in range(10)]
+    # 해당 digit의 숫자(0-9)에 따라 담아놓을 queue들
+    buckets = [[] for _ in range(10)]
     
     max_ = max(l)
-    lq = deque(l)
     decimal = 1 # decimal place to examine
     
     while max_ >= decimal:
-        while lq: # lq에서 빼서 corresponding한 bucket들로 이동
-            i = lq.popleft()
+        while l: # l에서 빼서 corresponding한 bucket들로 이동
+            i = l.pop(0)
             buckets[(i//decimal)%10].append(i)
             
-        for bucket in buckets: # bucket들에서 순서대로 빼서 lq로 이동
+        for bucket in buckets: # bucket들에서 순서대로 빼서 l로 이동
             while bucket:
-                lq.append(bucket.popleft())
+                l.append(bucket.pop(0))
                 
         decimal*=10
         
-    return list(lq)
-
-l = radixsort(l)
+radixsort(l)
 print(l)
 ```
 
