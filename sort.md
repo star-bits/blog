@@ -9,8 +9,8 @@ l = [i for i in range(9, -1, -1)]
 print(l)
 
 def bubblesort(l):
-    for i in range(len(l)-1): # sort completed in the penultimate iteration.
-        for j in range(len(l)-i-1): # -i because i elements in the right are already sorted.
+    for i in range(len(l)-1): # sort completed in the penultimate iteration
+        for j in range(len(l)-i-1): # -i because i elements in the right are already sorted
             if l[j] > l[j+1]:
                 l[j], l[j+1] = l[j+1], l[j]
                 
@@ -129,10 +129,10 @@ def partition(l, first, last):
     pivot = l[last]
     j = first
     
-    # pivot보다 l[i]가 크면 j를 그 element에 고정하고 swap 없이 다음 i로 넘어감.
-    # pivot보다 l[i]가 작으면 l[i]와 l[j] swap하고 j+=1.
-    # 마지막에 j와 pivot도 swap.
-    # j는 항상 pivot보다 큰 첫번째 element의 index.
+    # pivot보다 l[i]가 크면 j를 그 element에 고정하고 swap 없이 다음 i로 넘어감
+    # pivot보다 l[i]가 작으면 l[i]와 l[j] swap하고 j+=1
+    # 마지막에 j와 pivot도 swap
+    # j는 항상 pivot보다 큰 첫번째 element의 index
     for i in range(first, last):
         if l[i] < pivot:
             l[j], l[i] = l[i], l[j]
@@ -158,7 +158,37 @@ j=0->2713654->1      ->2173654->2   ->2137654->3      ->2134657
 $O(n \log n)$
 
 ```python
+import random
+l = [i for i in range(10)]
+random.shuffle(l)
+print(l)
 
+def heapsort(l):
+    for i in range((len(l)//2)-1, -1, -1): # build max heap
+        heapify(l, i, len(l))
+        
+    for i in range(len(l)-1, 0, -1): # 최댓값 찾아 맨 뒤로 보냄
+        l[0], l[i] = l[i], l[0]
+        heapify(l, 0, i)
+            
+def heapify(l, parent, length):
+    largest = parent # parent node index
+    left = 2*parent+1 # left child node index
+    right = 2*parent+2 # right child node index
+    
+    if left<length and l[left]>l[largest]: # max heap을 만족하지 않으면
+        largest = left # largest node index를 바꿈
+    if right<length and l[right]>l[largest]: # max heap을 만족하지 않으면
+        largest = right # largest node index를 바꿈
+        
+    if largest != parent:
+        l[largest], l[parent] = l[parent], l[largest] # 기존 parent와 swap
+        heapify(l, largest, length) # largest--하지만 swap 후 더 이상 최댓값을 가리키지 않고 child nodes중 하나가 된--를 parent로 다시 heapify
+        # 재귀로 list 전체를 max heap화 함
+        # element를 swap했을 뿐 largest의 index는 그대로이기 때문
+    
+heapsort(l)
+print(l)
 ```
 
 ## Counting sort: `count[l[i]]-1`은 `l[i]`이 위치할 수 있는 최대 인덱스
