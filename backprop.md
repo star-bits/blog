@@ -4,14 +4,6 @@
 
 ## Numerical gradient
 
-$w$ 값을 $\pm h$한 상태로 $loss(x, t)$를 계산함 (= $\frac{\partial L}{\partial w}$ = `dw`)
-
-$w, x \rightarrow z$
-
-$z \rightarrow y$
-
-$y, t \rightarrow loss$
-
 ### Simple numerical gradient with independent variable w
 
 $w$ 값을 $\pm h$한 상태로 $f(w)$를 계산함 (= $\frac{\partial f}{\partial w}$)
@@ -94,8 +86,8 @@ t = np.array([0, 0, 1])
 print(net.loss(x, t))
 
 
-def f(W):
-    return net.loss(x, t)
+def f(W): # ⭐
+    return net.loss(x, t) # ⭐
 
 
 dW = numerical_gradient(f, net.W)
@@ -110,12 +102,7 @@ print(dW)
  [ 0.74485207  0.06922396 -0.81407603]]
 ```
 
-```python
-def f(W):
-    return net.loss(x, t)
-```
-
-$W$ 값을 $\pm h$한 상태로 $loss(x, t)$를 계산함 (= $\frac{\partial L}{\partial W}$ = `dW`)
+$W$ 값을 $\pm h$한 상태로 $loss(x, t)$를 계산함 (= $\frac{\partial L}{\partial W}$ = `dW`) ⭐
 
 $W, x \rightarrow z$
 
@@ -258,7 +245,7 @@ class Sigmoid:
 
 $X \cdot W + B = Y$
 
-$\frac{\partial L}{\partial X} = \frac{\partial L}{\partial Y} \cdot W^T$, $\frac{\partial L}{\partial W} = X^T \cdot \frac{\partial L}{\partial Y}$, $\frac{\partial L}{\partial B} = \frac{\partial L}{\partial Y}$
+$\frac{\partial L}{\partial X} = \frac{\partial L}{\partial Y} \cdot W^T$, $\frac{\partial L}{\partial W} = X^T \cdot \frac{\partial L}{\partial Y}$, $\frac{\partial L}{\partial B} = \frac{\partial L}{\partial Y}$ ⭐
 
 ```python
 class Affine:
@@ -276,20 +263,12 @@ class Affine:
         return out
     
     def backward(self, dout):
-        dx = np.dot(dout, self.W.T)
-        self.dW = np.dot(self.x.T, dout)
-        self.db = np.sum(dout, axis=0)
+        dx = np.dot(dout, self.W.T) # ⭐
+        self.dW = np.dot(self.x.T, dout) # ⭐
+        self.db = np.sum(dout, axis=0) # ⭐
         
         return dx
 ```
-
-```python
-dx = np.dot(dout, self.W.T)
-self.dW = np.dot(self.x.T, dout)
-self.db = np.sum(dout, axis=0)
-```
-
-$\frac{\partial L}{\partial X} = \frac{\partial L}{\partial Y} \cdot W^T$, $\frac{\partial L}{\partial W} = X^T \cdot \frac{\partial L}{\partial Y}$, $\frac{\partial L}{\partial B} = \frac{\partial L}{\partial Y}$
 
 ### Softmax-with-Loss
 
