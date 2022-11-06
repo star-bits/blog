@@ -160,43 +160,35 @@ $\frac{\partial L}{\partial z} \cdot y, \frac{\partial L}{\partial z} \cdot x \l
 ### ReLU
 
 $$
-y = \left\{
-    \begin{array}\\
+y = \begin{cases}
         x & (x>0)\\
         0 & (x\leq0)
-    \end{array}
-\right.
+    \end{cases}
 $$
 
 $$
-\frac{\partial y}{\partial x} = \left\{
-    \begin{array}\\
+\frac{\partial y}{\partial x} = \begin{cases}
         1 & (x>0)\\
         0 & (x\leq0)
-    \end{array}
-\right.
+    \end{cases}
 $$
 
 Forward propagation:
 
 $$
-\left\{
-    \begin{array}\\
-        x \rightarrow y=x & (x>0)\\
-        x \rightarrow y=0 & (x\leq0)
-    \end{array}
-\right.
+\begin{cases}
+    x \rightarrow y=x & (x>0)\\
+    x \rightarrow y=0 & (x\leq0)
+\end{cases}
 $$
 
 Backward propagation:
 
 $$
-\left\{
-    \begin{array}\\
-        \frac{\partial L}{\partial y} \leftarrow \frac{\partial L}{\partial y} & (x>0)\\
-        0 \leftarrow \frac{\partial L}{\partial y} & (x\leq0)
-    \end{array}
-\right.
+\begin{cases}
+    \frac{\partial L}{\partial y} \leftarrow \frac{\partial L}{\partial y} & (x>0)\\
+    0 \leftarrow \frac{\partial L}{\partial y} & (x\leq0)
+\end{cases}
 $$
 
 ```python
