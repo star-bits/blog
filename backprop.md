@@ -63,6 +63,14 @@ array([-6.11110793e-10,  8.14814391e-10])
 
 ### Numerical gradient on neural network
 
+$W$ 값을 $\pm h$한 상태로 $loss(x, t)$를 계산함 (= $\frac{\partial L}{\partial W}$ = `dW`) ⭐
+
+$W, x \rightarrow z$
+
+$z \rightarrow y$
+
+$y, t \rightarrow loss$
+
 ```python
 class simpleNet:
     def __init__(self):
@@ -95,20 +103,12 @@ print(dW)
 ```
 
 ```
-[[ 0.20916827 -0.07467028 -0.85182626]
- [ 2.4889391   0.03834412  0.79656462]]
-2.348940785732206
-[[ 0.49656805  0.04614931 -0.54271735]
- [ 0.74485207  0.06922396 -0.81407603]]
+[[-3.01115348  0.4640963  -1.85174813]
+ [ 0.19180367  0.7046224  -1.30501329]]
+3.3107699086628117
+[[ 0.04199902  0.53610661 -0.57810563]
+ [ 0.06299853  0.80415992 -0.86715845]]
 ```
-
-$W$ 값을 $\pm h$한 상태로 $loss(x, t)$를 계산함 (= $\frac{\partial L}{\partial W}$ = `dW`) ⭐
-
-$W, x \rightarrow z$
-
-$z \rightarrow y$
-
-$y, t \rightarrow loss$
 
 ## Backprop
 
