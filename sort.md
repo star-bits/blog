@@ -8,13 +8,13 @@ $O(n^2)$
 l = [i for i in range(9, -1, -1)]
 print(l)
 
-def bubblesort(l):
+def bubble_sort(l):
     for i in range(len(l)-1): # sort completed in the penultimate iteration
         for j in range(len(l)-i-1): # -i because i elements in the right are already sorted
             if l[j] > l[j+1]:
                 l[j], l[j+1] = l[j+1], l[j]
                 
-bubblesort(l)
+bubble_sort(l)
 print(l)
 ```
 
@@ -26,7 +26,7 @@ $O(n^2)$
 l = [i for i in range(9, -1, -1)]
 print(l)
 
-def selectionsort(l):
+def selection_sort(l):
     for i in range(len(l)-1):
         min_idx = i
         for j in range(i+1, len(l)):
@@ -34,7 +34,7 @@ def selectionsort(l):
                 min_idx = j
         l[i], l[min_idx] = l[min_idx], l[i]
         
-selectionsort(l)
+selection_sort(l)
 print(l)
 ```
 
@@ -44,7 +44,7 @@ print(l)
 l = [i for i in range(9, -1, -1)]
 print(l)
 
-def selectionsort(l):
+def selection_sort(l):
     for i in range(len(l)-1, -1, -1):
         max_idx = i
         for j in range(i):
@@ -52,7 +52,7 @@ def selectionsort(l):
                 max_idx = j
         l[i], l[max_idx] = l[max_idx], l[i]
         
-selectionsort(l)
+selection_sort(l)
 print(l)
 ```
 
@@ -64,13 +64,13 @@ Worst: $O(n^2)$, Average: $O(n^2)$, Best: $O(n)$
 l = [i for i in range(9, -1, -1)]
 print(l)
 
-def insertionsort(l):
+def insertion_sort(l):
     for i in range(1, len(l)):
         for j in range(i, 0, -1):
             if l[j-1]>l[j]:
                 l[j-1], l[j] = l[j], l[j-1]
                 
-insertionsort(l)
+insertion_sort(l)
 print(l)
 ```
 
@@ -82,13 +82,13 @@ $O(n \log n)$
 l = [i for i in range(9, -1, -1)]
 print(l)
 
-def mergesort(l):
+def merge_sort(l):
     if len(l)==1:
         return l
     
     mid = len(l)//2
-    left = mergesort(l[:mid])
-    right = mergesort(l[mid:])
+    left = merge_sort(l[:mid])
+    right = merge_sort(l[mid:])
     return merge(left, right)
     
 def merge(left, right):
@@ -107,7 +107,7 @@ def merge(left, right):
     
     return output
 
-l = mergesort(l)
+l = merge_sort(l)
 print(l)
 ```
 
@@ -119,11 +119,11 @@ Worst: $O(n^2)$, Average: $O(n \log n)$, Best: $O(n \log n)$
 l = [2, 7, 1, 3, 6, 5, 4]
 print(l)
 
-def quicksort(l, first, last): # index of the first and last element
+def quick_sort(l, first, last): # index of the first and last element
     if first < last:
         pivot = partition(l, first, last)
-        quicksort(l, first, pivot-1)
-        quicksort(l, pivot+1, last)
+        quick_sort(l, first, pivot-1)
+        quick_sort(l, pivot+1, last)
         
 def partition(l, first, last):
     pivot = l[last]
@@ -141,7 +141,7 @@ def partition(l, first, last):
     l[j], l[last] = l[last], l[j]
     return j
 
-quicksort(l, 0, len(l)-1)
+quick_sort(l, 0, len(l)-1)
 print(l)
 ```
 
@@ -163,7 +163,7 @@ l = [i for i in range(10)]
 random.shuffle(l)
 print(l)
 
-def heapsort(l):
+def heap_sort(l):
     for i in range((len(l)//2)-1, -1, -1): # build max heap
         heapify(l, i, len(l))
         
@@ -187,7 +187,7 @@ def heapify(l, parent, length):
         # 재귀로 list 전체를 max heap화 함
         # element를 swap했을 뿐 largest의 index는 그대로이기 때문
     
-heapsort(l)
+heap_sort(l)
 print(l)
 ```
 
@@ -199,7 +199,7 @@ $O(n+k)$
 l = [4, 2, 2, 8, 3, 3, 1]
 print(l)
 
-def countingsort(l):
+def counting_sort(l):
     output = [0] * len(l)
     count = [0] * (max(l)+1)
     
@@ -219,7 +219,7 @@ def countingsort(l):
     
     return output
 
-l = countingsort(l)
+l = counting_sort(l)
 print(l)
 ```
 
@@ -231,7 +231,7 @@ $O(d*(n+k))$
 l = [152, 73, 69, 41, 28, 1247, 2, 33, 674, 388]
 print(l)
 
-def radixsort(l):
+def radix_sort(l):
     # 해당 digit의 숫자(0-9)에 따라 담아놓을 queue들
     buckets = [[] for _ in range(10)]
     
@@ -249,7 +249,7 @@ def radixsort(l):
                 
         decimal*=10
         
-radixsort(l)
+radix_sort(l)
 print(l)
 ```
 
