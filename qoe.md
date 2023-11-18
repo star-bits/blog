@@ -19,7 +19,7 @@
 ## de Broglie wavelength
 ### Quantum realm
 
-## Bohr formula, Schrodinger's equation, Heisenberg's indeterminacy principle, Pauli's exclusion principle
+## Bohr formula, Schrodinger's equation, Heisenberg's indeterminacy principle, Pauli exclusion principle
 ### TISE in spherical coordinates
 ### Laplacian in spherical coordinates
 ### Separation of Variables on TISE
