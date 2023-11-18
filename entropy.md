@@ -3,8 +3,8 @@
 - {disorder, unpredictability, surprisal, information content, or randomness} in a
 - {system, message, or probability distribution}.
 
-## Entropy in thermodynamics vs. information theory
-- Thermodynamics: ordered system has low entropy; chaotic, random system has high entropy.
+## Entropy in physics vs. information theory
+- physics: ordered system has low entropy; chaotic, random system has high entropy.
 - Information theory: unpredictable, information-dense, high-surprisal message has high entropy; predictable message has low entropy.
 - Random means unpredictable.
 
