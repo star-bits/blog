@@ -6,8 +6,12 @@
 - Supervised learning
   - Regression (Linear regression)
     - Single variable linear regression
-      - $\hat{y}^{(i)} = f_{w,b}(x^{(i)}) = wx^{(i)} + b$
-      - $J(w,b) = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$ 
+      - $f_{w,b}(x^{(i)}) = wx^{(i)} + b$
+      - $J(w,b) = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$
+      - $w = w - \alpha \frac{\partial J(w,b)}{\partial w}$
+      - $b = b - \alpha \frac{\partial J(w,b)}{\partial b}$
+      - $\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$
+      - $\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})$
   - Classification
 - Unsupervised learning
   - Clustering
