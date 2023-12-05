@@ -12,7 +12,8 @@
       - $b = b - \alpha \frac{\partial J(w,b)}{\partial b}$
       - $\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$
       - $\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})$
-    - Multiple variabble linear regression
+    - Multiple variable linear regression
+    - Polynomial regression
   - Classification
 - Unsupervised learning
   - Clustering
