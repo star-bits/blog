@@ -5,7 +5,7 @@
 ### Overview
 - Supervised learning
   - Regression
-    - Single variable linear regression
+    - Univariate linear regression
       - $f_{w,b}(x^{(i)}) = wx^{(i)} + b$
       - $J(w,b) = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$
       - $w = w - \alpha \frac{\partial J(w,b)}{\partial w}$
