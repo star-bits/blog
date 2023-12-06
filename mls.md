@@ -19,15 +19,15 @@
     - Why not use squared error cost function for logistic regression? The non-linear nature of the model results in a "wiggly", non-convex cost function with many local minima. (Sigmoid cost function gives convex cost function. The proof of it is out of scope.)
     - Binary classification
       - $f_{w,b}(x^{(i)}) = sigmoid(wx^{(i)} + b )$
-      - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) \quad \text{if } y^{(i)}=1$
+      - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = -\log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) \quad \text{if } y^{(i)}=1$
         - $\text{as } f(x) \to 0, \text{loss} \to \infty$
         - $\text{as } f(x) \to 1, \text{loss} \to 0$
         - $y=-\log(x)$ is $y=\log(x)$ reflected across the x-axis.
-      - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) \quad \text{if } y^{(i)}=0$
+      - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = -\log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) \quad \text{if } y^{(i)}=0$
         - $\text{as } f(x) \to 0, \text{loss} \to 0$
         - $\text{as } f(x) \to 1, \text{loss} \to \infty$
         - $y=-\log(1-x)$ is $y=-\log(x)$ refected across the y-axis and then translated along the x-axis by +1.
-      - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = -y^{(i)} \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) - \left( 1 - y^{(i)}\right) \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right)$
+      - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = -\left(y^{(i)}\right) \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) - \left( 1 - y^{(i)}\right) \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right)$
       - $J(\mathbf{w},b) = \frac{1}{m} \sum\limits_{i=0}^{m-1} \left[ L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) \right]$
 
 - Unsupervised learning
