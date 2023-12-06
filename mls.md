@@ -27,6 +27,8 @@
         - $\text{as } f(x) \to 0, \text{loss} \to 0$
         - $\text{as } f(x) \to 1, \text{loss} \to \infty$
         - $y=-\log(1-x)$ is $y=-\log(x)$ refected across the y-axis and then translated along the x-axis by +1.
+      - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = -y^{(i)} \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) - \left( 1 - y^{(i)}\right) \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right)$
+      - $J(\mathbf{w},b) = \frac{1}{m} \sum\limits_{i=0}^{m-1} \left[ L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) \right]$
 
 - Unsupervised learning
   - Clustering
