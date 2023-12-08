@@ -1,8 +1,7 @@
 # Machine Learning Specialization (Dec 2023)
 
-## C1: Regression (Linear regression) and Classification (Logistic regression)
+## C1: Linear regression (regression) and Logistic regression (classification)
 
-### Overview
 - Supervised learning
   - Regression (Linear regression)
     - Univariate linear regression
@@ -10,8 +9,8 @@
       - $J(w,b) = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$
       - $w = w - \alpha \frac{\partial J(w,b)}{\partial w}$
       - $b = b - \alpha \frac{\partial J(w,b)}{\partial b}$
-      - $\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$
-      - $\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})$
+      - $\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$
+      - $\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})$
     - Multiple variable linear regression
     - Polynomial regression
   - Classification (Logistic regression)
@@ -28,7 +27,11 @@
         - $\text{as } f(x) \to 1, \text{loss} \to \infty$
         - $y=-\log(1-x)$ is $y=-\log(x)$ refected across the y-axis and then translated along the x-axis by +1.
       - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = -\left(y^{(i)}\right) \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) - \left( 1 - y^{(i)}\right) \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right)$
-      - $J(\mathbf{w},b) = \frac{1}{m} \sum\limits_{i=0}^{m-1} \left[ L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) \right]$
+      - $J(\mathbf{w},b) = \frac{1}{m} \sum\limits_{i=1}^{m} \left[ L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) \right] = -\frac{1}{m} \sum\limits_{i=1}^{m} \left[ \left(y^{(i)}\right) \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) + \left( 1 - y^{(i)}\right) \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) \right]$
+      - $w_j = w_j -  \alpha \frac{\partial J(\mathbf{w},b)}{\partial w_j}$
+      - $\frac{\partial J(\mathbf{w},b)}{\partial w_j} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})x_{j}^{(i)}$
+      - $b = b -  \alpha \frac{\partial J(\mathbf{w},b)}{\partial b}$
+      - $\frac{\partial J(\mathbf{w},b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})$
 
 - Unsupervised learning
   - Clustering
@@ -36,6 +39,16 @@
   - Dimensionality reduction
 
 
-## C2: 
+## C2-1: Neural Networks and TensorFlow
+
+\begin{equation}
+  L(\mathbf{a},y)=\begin{cases}
+    -log(a_1), & \text{if $y=1$}.\\
+        &\vdots\\
+     -log(a_N), & \text{if $y=N$}
+  \end{cases} \tag{3}
+\end{equation}
+
+## C2-2: Decision Trees and XGBoost
 
 ## C3: 
