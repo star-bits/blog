@@ -51,7 +51,7 @@
 
 ### Activation function
 - Why is ReLU better than sigmoid?
-  - When you have a function that is flat on a lot of places, gradient descents would be slower. The cost function graph too will have a lot of flat places.
+  - When you have a function that is flat on a lot of places, the cost function graph too will have a lot of flat places, making gradient descent to be slower.
 
 ### Softmax regression (as opposed to Logistic regression)
 - $a_i = \frac{e^{z_i}}{\sum\limits_{k=1}^{N}{e^{z_k} }}$
