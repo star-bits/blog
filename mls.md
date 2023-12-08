@@ -1,13 +1,13 @@
 # Machine Learning Specialization (Dec 2023)
 
-## C1: Linear regression (regression) and Logistic regression (classification)
+## C1: Linear regression (Regression) and Logistic regression (Classification)
 
 ### Overview
 - Supervised learning
   - Regression
     - Univariate linear regression
     - Multi-variable linear regression
-    - Polynomial regression
+      - Polynomial regression
   - Classification
     - Binary classification
     - Multi-class classification
@@ -24,10 +24,11 @@
 - $\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$
 - $\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})$
      
-
 ### Classification (Logistic regression)
-- Why not use linear regression for classification? The outlier problem. An outlier can shift the decision boundary by a lot.
-- Why not use squared error cost function for logistic regression? The non-linear nature of the model results in a "wiggly", non-convex cost function with many local minima. (Sigmoid cost function gives convex cost function. The proof of it is out of scope.)
+- Why not use linear regression for classification?
+  - The outlier problem. An outlier can shift the decision boundary by a lot.
+- Why not use squared error cost function for logistic regression?
+  - The non-linear nature of the model results in a "wiggly", non-convex cost function with many local minima. (Sigmoid cost function gives convex cost function. The proof of it is out of scope.)
    
 ### Binary classification
 - $f_{w,b}(x^{(i)}) = sigmoid(wx^{(i)} + b )$
@@ -46,21 +47,64 @@
 - $b = b -  \alpha \frac{\partial J(\mathbf{w},b)}{\partial b}$
 - $\frac{\partial J(\mathbf{w},b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})$
 
-
 ## C2-1: Neural Networks and TensorFlow
 
+### Activation function
+- Why is ReLU better than sigmoid?
+  - When you have a function that is flat on a lot of places, gradient descents would be slower. The cost function graph too will have a lot of flat places.
 
+### Softmax regression (as opposed to Logistic regression)
+- $a_i = \frac{e^{z_i}}{\sum\limits_{k=1}^{N}{e^{z_k} }}$
+- $L(\mathbf{a},y) = -\log(a_1), \quad \text{if } y=1$
+- $L(\mathbf{a},y) = -\log(a_N), \quad \text{if } y=N$
 
-\begin{equation}
-  L(\mathbf{a},y)=\begin{cases}
-    -log(a_1), & \text{if $y=1$}.\\
-        &\vdots\\
-     -log(a_N), & \text{if $y=N$}
-  \end{cases} \tag{3}
-\end{equation}
+### TensorFlow
+```python
+import tensorflow as tf
+from tensorflow.keras.layers import Dense, Input
+from tensorflow.keras.models import Sequential
+```
+```python
+model = Sequential(
+    [
+        Input(shape=(2,)),
+        Dense(3, activation='sigmoid', name = 'layer1'), # 'relu', 'linear'
+        Dense(1, activation='sigmoid', name = 'layer2')
+    ]
+)
 
-
-
+model.compile(
+    loss = tf.keras.losses.BinaryCrossentropy(), # CategoricalCrossentropy(), SparseCategoricalCrossentropy(from_logits=True)
+    optimizer = tf.keras.optimizers.Adam(learning_rate=0.01),
+)
+```
+```python
+model.fit(X_train, Y_train, epochs=10)
+```
+```python
+model.summary()
+```
+```
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ layer1 (Dense)              (None, 3)                 9         
+                                                                 
+ layer2 (Dense)              (None, 1)                 4         
+                                                                 
+=================================================================
+Total params: 13 (52.00 Byte)
+Trainable params: 13 (52.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+```
+```python
+W1, b1 = model.get_layer("layer1").get_weights()
+```
+```python
+model.get_layer("layer1").set_weights([W1, b1])
+```
 
 ## C2-2: Decision Trees and XGBoost
 
