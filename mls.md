@@ -20,9 +20,9 @@
 - $f_{w,b}(x^{(i)}) = wx^{(i)} + b$
 - $J(w,b) = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$
 - $w = w - \alpha \frac{\partial J(w,b)}{\partial w}$
+  - $\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$
 - $b = b - \alpha \frac{\partial J(w,b)}{\partial b}$
-- $\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$
-- $\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})$
+  - $\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})$
      
 ### Classification (Logistic regression)
 - Why not use linear regression for classification?
@@ -43,9 +43,9 @@
 - $L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) = -\left(y^{(i)}\right) \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) - \left( 1 - y^{(i)}\right) \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right)$
 - $J(\mathbf{w},b) = \frac{1}{m} \sum\limits_{i=1}^{m} \left[ L(f_{\mathbf{w},b}(\mathbf{x}^{(i)}), y^{(i)}) \right] = -\frac{1}{m} \sum\limits_{i=1}^{m} \left[ \left(y^{(i)}\right) \log\left(f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) + \left( 1 - y^{(i)}\right) \log \left( 1 - f_{\mathbf{w},b}\left( \mathbf{x}^{(i)} \right) \right) \right]$
 - $w_j = w_j -  \alpha \frac{\partial J(\mathbf{w},b)}{\partial w_j}$
-- $\frac{\partial J(\mathbf{w},b)}{\partial w_j} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})x_{j}^{(i)}$
+  - $\frac{\partial J(\mathbf{w},b)}{\partial w_j} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})x_{j}^{(i)}$
 - $b = b -  \alpha \frac{\partial J(\mathbf{w},b)}{\partial b}$
-- $\frac{\partial J(\mathbf{w},b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})$
+  - $\frac{\partial J(\mathbf{w},b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})$
 
 ## C2-1: Neural Networks and TensorFlow
 
@@ -79,9 +79,6 @@ model.compile(
 )
 ```
 ```python
-model.fit(X_train, Y_train, epochs=10)
-```
-```python
 model.summary()
 ```
 ```
@@ -98,6 +95,9 @@ Total params: 13 (52.00 Byte)
 Trainable params: 13 (52.00 Byte)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
+```
+```python
+model.fit(X_train, Y_train, epochs=10)
 ```
 ```python
 W1, b1 = model.get_layer("layer1").get_weights()
