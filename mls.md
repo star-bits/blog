@@ -58,7 +58,7 @@
 - $L(\mathbf{a},y) = -\log(a_1), \quad \text{if } y=1$
 - $L(\mathbf{a},y) = -\log(a_N), \quad \text{if } y=N$
 
-### TensorFlow
+### Neural Network with TensorFlow
 ```python
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Input
