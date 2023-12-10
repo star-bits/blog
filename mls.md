@@ -114,7 +114,7 @@ model.get_layer("layer1").set_weights([W1, b1])
 - $H(p_1) = -p_1 \text{log}_2(p_1) - (1- p_1) \text{log}_2(1- p_1)$
 - $\text{Information Gain} = H(p_1^\text{node})- \left(w^{\text{left}}H\left(p_1^\text{left}\right) + w^{\text{right}}H\left(p_1^\text{right}\right)\right)$
 - Regression tree: reduction in variance instead of reduction in entropy
-- Random forest
-- Boosted trees
+- Random forest: sampling with replacement
+- Boosted trees: insead of picking all examples with equal probability, make it more likely to pick misclassified examples from previously trained trees
 
 ## C3: 
