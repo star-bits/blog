@@ -120,11 +120,6 @@ model.get_layer("layer1").set_weights([W1, b1])
 ### DecisionTreeClassifier from scikit-learn
 - Low `min_samples_split` (the minimum number of samples required to split an node) leads to overfitting
 - High `max_depth` leads to overfitting
-
-| accuracy by `min_samples_split` | accuracy by `max_depth` |
-| --- | --- |
-| ![decision_tree_min_samples_split](https://github.com/star-bits/blog/assets/93939472/98107f95-0612-4a49-b002-a2fa55a847be) | ![decision_tree_max_depth](https://github.com/star-bits/blog/assets/93939472/dd6f082b-146c-4df3-b3a3-cc4ddab28a2c) |
-
 ```python
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
@@ -143,10 +138,6 @@ Validation accuracy: 0.8641
 ```
 
 ### RandomForestClassifier from scikit-learn
-| accuracy by `min_samples_split` | accuracy by `max_depth` |
-| --- | --- |
-| ![random_forest_min_samples_split](https://github.com/star-bits/blog/assets/93939472/05bd6c29-a315-40a8-9947-584803d1491e) | ![random_forest_max_depth](https://github.com/star-bits/blog/assets/93939472/2da1f92e-d799-40e3-acc2-e6587e3c6aa4) |
-
 ```python
 from sklearn.ensemble import RandomForestClassifier
 
@@ -191,7 +182,7 @@ Validation accuracy: 0.8641
 - Reinforcement learning
 
 ### K-means clustering
-- Random initialization -> Compute distance -> Move centroids
+- Random initialization -> Iterative process of (Compute distance -> Move centroids)
 - Cost function: Distance squared
 - Number of random initializations: 50-1000
 - Number of clusters K: Huristic
