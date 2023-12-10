@@ -47,7 +47,7 @@
 - $b = b -  \alpha \frac{\partial J(\mathbf{w},b)}{\partial b}$
   - $\frac{\partial J(\mathbf{w},b)}{\partial b} = \frac{1}{m} \sum\limits_{i = 1}^{m} (f_{\mathbf{w},b}(\mathbf{x}^{(i)}) - y^{(i)})$
 
-## C2-1: Neural Networks and TensorFlow
+## C2-1: Neural Networks
 
 ### Activation function
 - Why is ReLU better than sigmoid?
@@ -106,7 +106,7 @@ W1, b1 = model.get_layer("layer1").get_weights()
 model.get_layer("layer1").set_weights([W1, b1])
 ```
 
-## C2-2: Decision Trees and XGBoost
+## C2-2: Decision Trees
 
 ### Decision trees
 - Which feature to split upon in each node?
@@ -182,7 +182,7 @@ Validation accuracy: 0.8641
 - Reinforcement learning
 
 ### K-means clustering
-- Random initialization -> Iterative process of (Compute distance -> Move centroids)
+- Random initialization -> Iterative process of (Compute distances to datapoints -> Move centroids)
 - Cost function: Distance squared
 - Number of random initializations: 50-1000
 - Number of clusters K: Huristic
