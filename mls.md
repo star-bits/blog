@@ -97,7 +97,7 @@ Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
 ```
 ```python
-model.fit(X_train, Y_train, epochs=10)
+model.fit(X_train, y_train, epochs=10)
 ```
 ```python
 W1, b1 = model.get_layer("layer1").get_weights()
@@ -117,8 +117,6 @@ model.get_layer("layer1").set_weights([W1, b1])
 - Random forest: Sampling with replacement
 - Boosted trees: Insead of picking all examples with equal probability, make it more likely to pick misclassified examples from previously trained trees.
 
-
-
 ### Decision Tree with XGBoost
 - Classification
 ```python
@@ -137,7 +135,7 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 ```
 
-## C3: 
+## C3: Clustering, Anomaly detection, Recommender systems, Reinforcement learning
 
 ### Beyond Supervised learning
 - Unsupervised learning
@@ -145,5 +143,11 @@ y_pred = model.predict(X_test)
   - Anomaly detection
 - Recommender systems
 - Reinforcement learning
+
+### K-means clustering
+- Random initialization -> Compute distance -> Move centroids
+- Cost function: Distance squared
+- Number of random initializations: 50-1000
+- Number of clusters K: Huristic
 
 ### 
