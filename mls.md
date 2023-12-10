@@ -108,4 +108,13 @@ model.get_layer("layer1").set_weights([W1, b1])
 
 ## C2-2: Decision Trees and XGBoost
 
+### Decision tree
+- Which feature to split upon in each node?
+  - Maximum purity = Highest information gain = Biggest amount of reduction in entropy = More order
+- $H(p_1) = -p_1 \text{log}_2(p_1) - (1- p_1) \text{log}_2(1- p_1)$
+- $\text{Information Gain} = H(p_1^\text{node})- \left(w^{\text{left}}H\left(p_1^\text{left}\right) + w^{\text{right}}H\left(p_1^\text{right}\right)\right)$
+- Regression tree: reduction in variance instead of reduction in entropy
+- Random forest
+- Boosted trees
+
 ## C3: 
