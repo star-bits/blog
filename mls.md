@@ -117,25 +117,71 @@ model.get_layer("layer1").set_weights([W1, b1])
 - Random forest: Sampling with replacement
 - Boosted trees: Insead of picking all examples with equal probability, make it more likely to pick misclassified examples from previously trained trees.
 
-### Decision Tree with XGBoost
-- Classification
+### DecisionTreeClassifier from scikit-learn
+- Low `min_samples_split` (the minimum number of samples required to split an node) leads to overfitting
+- High `max_depth` leads to overfitting
+
+| accuracy by `min_samples_split` | accuracy by `max_depth` |
+| --- | --- |
+| ![decision_tree_min_samples_split](https://github.com/star-bits/blog/assets/93939472/98107f95-0612-4a49-b002-a2fa55a847be) | ![decision_tree_max_depth](https://github.com/star-bits/blog/assets/93939472/dd6f082b-146c-4df3-b3a3-cc4ddab28a2c) |
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+decision_tree_model = DecisionTreeClassifier(min_samples_split = 50,
+                                             max_depth = 3,
+                                             random_state = RANDOM_STATE).fit(X_train, y_train)
+```
+```python
+print(f"Train accuracy: {accuracy_score(decision_tree_model.predict(X_train), y_train):.4f}")
+print(f"Validation accuracy: {accuracy_score(decision_tree_model.predict(X_val), y_val):.4f}")
+```
+```
+Train accuracy: 0.8583
+Validation accuracy: 0.8641
+```
+
+### RandomForestClassifier from scikit-learn
+| accuracy by `min_samples_split` | accuracy by `max_depth` |
+| --- | --- |
+| ![random_forest_min_samples_split](https://github.com/star-bits/blog/assets/93939472/05bd6c29-a315-40a8-9947-584803d1491e) | ![random_forest_max_depth](https://github.com/star-bits/blog/assets/93939472/2da1f92e-d799-40e3-acc2-e6587e3c6aa4) |
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+random_forest_model = RandomForestClassifier(n_estimators = 100,
+                                             min_samples_split = 10,
+                                             max_depth = 16,
+                                             random_state = RANDOM_STATE).fit(X_train, y_train)
+```
+```python
+print(f"Train accuracy: {accuracy_score(random_forest_model.predict(X_train), y_train):.4f}")
+print(f"Validation accuracy: {accuracy_score(random_forest_model.predict(X_val), y_val):.4f}")
+```
+```
+Train accuracy: 0.9292
+Validation accuracy: 0.8967
+```
+
+### Gradient Boosting model XGBClassifier from XGBoost
 ```python
 from xgboost import XGBClassifier
 
-model = XGBClassifier()
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
+xgb_model = XGBClassifier(n_estimators = 500, learning_rate = 0.1, verbosity = 1, random_state = RANDOM_STATE)
+xgb_model.fit(X_train_fit, y_train_fit, eval_set = [(X_train_eval, y_train_eval)], early_stopping_rounds = 10)
 ```
-- Regression
+- Model was allowed up to 500 estimators, but the algorithm only fit 26 estimators. The best round of training was round 16.
 ```python
-from xgboost import XGBRegressor
-
-model = XGBRegressor()
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
+print(f"Train accuracy: {accuracy_score(xgb_model.predict(X_train), y_train):.4f}")
+print(f"Validation accuracy: {accuracy_score(xgb_model.predict(X_val), y_val):.4f}")
+```
+```
+Train accuracy: 0.9251
+Validation accuracy: 0.8641
 ```
 
-## C3: Clustering, Anomaly detection, Recommender systems, Reinforcement learning
+## C3: K-means clustering, Anomaly detection, Collaborative filtering, 
 
 ### Beyond Supervised learning
 - Unsupervised learning
@@ -150,4 +196,7 @@ y_pred = model.predict(X_test)
 - Number of random initializations: 50-1000
 - Number of clusters K: Huristic
 
-### 
+### Anomaly detection
+- Gaussian distribution
+
+### Collaborative filtering
