@@ -108,13 +108,42 @@ model.get_layer("layer1").set_weights([W1, b1])
 
 ## C2-2: Decision Trees and XGBoost
 
-### Decision tree
+### Decision trees
 - Which feature to split upon in each node?
-  - Maximum purity = Highest information gain = Biggest amount of reduction in entropy = More order
+  - Maximum purity = More order = Biggest amount of reduction in entropy = Highest information gain
 - $H(p_1) = -p_1 \text{log}_2(p_1) - (1- p_1) \text{log}_2(1- p_1)$
 - $\text{Information Gain} = H(p_1^\text{node})- \left(w^{\text{left}}H\left(p_1^\text{left}\right) + w^{\text{right}}H\left(p_1^\text{right}\right)\right)$
-- Regression tree: reduction in variance instead of reduction in entropy
-- Random forest: sampling with replacement
-- Boosted trees: insead of picking all examples with equal probability, make it more likely to pick misclassified examples from previously trained trees
+- Regression trees: Reduction in variance instead of reduction in entropy
+- Random forest: Sampling with replacement
+- Boosted trees: Insead of picking all examples with equal probability, make it more likely to pick misclassified examples from previously trained trees.
+
+
+
+### Decision Tree with XGBoost
+- Classification
+```python
+from xgboost import XGBClassifier
+
+model = XGBClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+```
+- Regression
+```python
+from xgboost import XGBRegressor
+
+model = XGBRegressor()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+```
 
 ## C3: 
+
+### Beyond Supervised learning
+- Unsupervised learning
+  - Clustering
+  - Anomaly detection
+- Recommender systems
+- Reinforcement learning
+
+### 
