@@ -191,3 +191,7 @@ Validation accuracy: 0.8641
 - Gaussian distribution
 
 ### Collaborative filtering
+
+### Content-based filtering
+
+### Principal Component Analysis
