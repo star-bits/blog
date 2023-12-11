@@ -63,8 +63,7 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Input
 from tensorflow.keras.models import Sequential
-```
-```python
+
 model = Sequential(
     [
         Input(shape=(2,)),
@@ -77,8 +76,7 @@ model.compile(
     loss = tf.keras.losses.BinaryCrossentropy(), # CategoricalCrossentropy(), SparseCategoricalCrossentropy(from_logits=True)
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.01),
 )
-```
-```python
+
 model.summary()
 ```
 ```
@@ -101,8 +99,6 @@ model.fit(X_train, y_train, epochs=10)
 ```
 ```python
 W1, b1 = model.get_layer("layer1").get_weights()
-```
-```python
 model.get_layer("layer1").set_weights([W1, b1])
 ```
 
@@ -127,14 +123,9 @@ from sklearn.metrics import accuracy_score
 decision_tree_model = DecisionTreeClassifier(min_samples_split = 50,
                                              max_depth = 3,
                                              random_state = RANDOM_STATE).fit(X_train, y_train)
-```
-```python
-print(f"Train accuracy: {accuracy_score(decision_tree_model.predict(X_train), y_train):.4f}")
-print(f"Validation accuracy: {accuracy_score(decision_tree_model.predict(X_val), y_val):.4f}")
-```
-```
-Train accuracy: 0.8583
-Validation accuracy: 0.8641
+
+print(accuracy_score(decision_tree_model.predict(X_train), y_train)) # 0.8583
+print(accuracy_score(decision_tree_model.predict(X_val), y_val)) # 0.8641
 ```
 
 ### RandomForestClassifier from scikit-learn
@@ -145,14 +136,9 @@ random_forest_model = RandomForestClassifier(n_estimators = 100,
                                              min_samples_split = 10,
                                              max_depth = 16,
                                              random_state = RANDOM_STATE).fit(X_train, y_train)
-```
-```python
-print(f"Train accuracy: {accuracy_score(random_forest_model.predict(X_train), y_train):.4f}")
-print(f"Validation accuracy: {accuracy_score(random_forest_model.predict(X_val), y_val):.4f}")
-```
-```
-Train accuracy: 0.9292
-Validation accuracy: 0.8967
+
+print(accuracy_score(random_forest_model.predict(X_train), y_train)) # 0.9292
+print(accuracy_score(random_forest_model.predict(X_val), y_val)) # 0.8967
 ```
 
 ### Gradient Boosting model XGBClassifier from XGBoost
@@ -161,27 +147,22 @@ from xgboost import XGBClassifier
 
 xgb_model = XGBClassifier(n_estimators = 500, learning_rate = 0.1, verbosity = 1, random_state = RANDOM_STATE)
 xgb_model.fit(X_train_fit, y_train_fit, eval_set = [(X_train_eval, y_train_eval)], early_stopping_rounds = 10)
-```
-- Model was allowed up to 500 estimators, but the algorithm only fit 26 estimators. The best round of training was round 16.
-```python
-print(f"Train accuracy: {accuracy_score(xgb_model.predict(X_train), y_train):.4f}")
-print(f"Validation accuracy: {accuracy_score(xgb_model.predict(X_val), y_val):.4f}")
-```
-```
-Train accuracy: 0.9251
-Validation accuracy: 0.8641
+# model was allowed up to 500 estimators, but the algorithm only fit 26 estimators
+
+print(accuracy_score(xgb_model.predict(X_train), y_train)) # 0.9251
+print(accuracy_score(xgb_model.predict(X_val), y_val)) # 0.8641
 ```
 
 ## C3-1: Unsupervised learning 
 
 ### K-means clustering
 - Random initialization -> Iterative process of (Compute distances to datapoints -> Move centroids)
-- Cost function: Distance squared
-- Number of random initializations: 50-1000
+- Cost function: MSE
+- Number of random initializations: 50-1000 times
 - Number of clusters K: Huristic
 
 ### Anomaly detection
-- Gaussian distribution
+- Gaussian distribution and pre-assigned threshold
 
 ### Principal Component Analysis
 - Reduces the number of features to 2-3
@@ -281,27 +262,29 @@ for iter in range(iterations):
 ```
 
 ### Content-based filtering
+- For each user, user vector $x_{user}^{(j)}$
+- For each movie, movie vector $x_{movie}^{(i)}$
+- User network: $X_{user} \to V_{user}$
+- Movie network: $X_{movie} \to V_{movie}$
+- $g(v_{user}^{(j)} \cdot v_{movie}^{(i)})$ to predict
 
 ```python
 num_outputs = 32
+
 user_NN = tf.keras.models.Sequential([  
     tf.keras.layers.Dense(256, activation='relu'),
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(num_outputs),
 ])
-
 item_NN = tf.keras.models.Sequential([  
     tf.keras.layers.Dense(256, activation='relu'),
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(num_outputs),
 ])
 
-# create the user input and point to the base network
 input_user = tf.keras.layers.Input(shape=(num_user_features))
 vu = user_NN(input_user)
 vu = tf.linalg.l2_normalize(vu, axis=1)
-
-# create the item input and point to the base network
 input_item = tf.keras.layers.Input(shape=(num_item_features))
 vm = item_NN(input_item)
 vm = tf.linalg.l2_normalize(vm, axis=1)
