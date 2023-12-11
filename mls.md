@@ -301,3 +301,6 @@ model.fit([user_train[:, u_s:], item_train[:, i_s:]], y_train, epochs=30)
 ```
 
 ## C3-3: Reinforcement learning
+
+
+$Q_{i+1}(s,a) = R + \gamma \max_{a'}Q_i(s',a')$
