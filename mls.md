@@ -185,75 +185,52 @@ Validation accuracy: 0.8641
 
 ### Principal Component Analysis
 - Reduces the number of features to 2-3
-- Used for data visualization
+- Mainly used for data visualization
+- Looks for the axis with maximum variance
 
-```
+```python
 from sklearn.decomposition import PCA
 
-
 X = np.array([[ 99,  -1],
-       [ 98,  -1],
-       [ 97,  -2],
-       [101,   1],
-       [102,   1],
-       [103,   2]])
+              [ 98,  -1],
+              [ 97,  -2],
+              [101,   1],
+              [102,   1],
+              [103,   2]])
 
-# Loading the PCA algorithm
-pca_2 = PCA(n_components=2)
-pca_2
+pca = PCA(n_components=1)
+pca
 
-pca_2.fit(X)
-
-
-pca_2.explained_variance_ratio_
-
-->
-array([0.99244289, 0.00755711])
-->
-The coordinates on the first principal component (first axis) are enough to retain 99.24% of the information ("explained variance").  The second principal component adds an additional 0.76% of the information ("explained variance") that is not stored in the first principal component coordinates.
-
-pca_1 = PCA(n_components=1)
-pca_1
-
-pca_1.fit(X)
-pca_1.explained_variance_ratio_
-
-->
+pca.fit(X)
+pca.explained_variance_ratio_ # returns a list of the amount of variance explained by each principal component
+```
+```
 array([0.99244289])
+```
+The coordinates on the first "principal component" (first axis) retain 99.24% of the information (explained variance).
 
-
-
-
-df with features as col and items as row
-
-
-# Loading the PCA object
-pca = PCA(n_components = 2) # Here we choose the number of components that we will keep.
-X_pca = pca.fit_transform(df)
+```python
+pca = PCA(n_components = 2) 
+X_pca = pca.fit_transform(df) # df is a dataframe with features as columns and items as rows
 df_pca = pd.DataFrame(X_pca, columns = ['principal_component_1','principal_component_2'])
+
+sum(pca.explained_variance_ratio_) # 0.14572843555106277
 
 plt.scatter(df_pca['principal_component_1'],df_pca['principal_component_2'], color = "#C00000")
 plt.xlabel('principal_component_1')
 plt.ylabel('principal_component_2')
 plt.title('PCA decomposition')
-
-# pca.explained_variance_ration_ returns a list where it shows the amount of variance explained by each principal component.
-sum(pca.explained_variance_ratio_)
-
-0.14572843555106277
-And we preserved only around 14.6% of the variance!
-
-
+plt.show()
+```
+```python
 pca_3 = PCA(n_components = 3).fit(df)
 X_t = pca_3.transform(df)
-df_pca_3 = pd.DataFrame(X_t,columns = ['principal_component_1','principal_component_2','principal_component_3'])
+df_pca_3 = pd.DataFrame(X_t, columns = ['principal_component_1', 'principal_component_2', 'principal_component_3'])
 
-import plotly.express as px
-
-fig = px.scatter_3d(df_pca_3, x = 'principal_component_1', y = 'principal_component_2', z = 'principal_component_3').update_traces(marker = dict(color = "#C00000"))
+fig = px.scatter_3d(df_pca_3, x = 'principal_component_1',
+                              y = 'principal_component_2',
+                              z = 'principal_component_3').update_traces(marker = dict(color = "#C00000"))
 fig.show()
-
-
 ```
 
 ## C3-2: Recommender systems
@@ -264,48 +241,7 @@ fig.show()
 - The dot product of the two vectors plus the bias term produces an estimate of the rating the user might give to the movie.
 - $J({\mathbf{x}^{(0)},...,\mathbf{x}^{(n_m-1)},\mathbf{w}^{(0)},b^{(0)},...,\mathbf{w}^{(n_u-1)},b^{(n_u-1)}})= \left[ \frac{1}{2}\sum_{(i,j):r(i,j)=1}(\mathbf{w}^{(j)} \cdot \mathbf{x}^{(i)} + b^{(j)} - y^{(i,j)})^2 \right] + \left[ \frac{\lambda}{2} \sum_{j=0}^{n_u-1}\sum_{k=0}^{n-1}(\mathbf{w}^{(j)}_k)^2 + \frac{\lambda}{2}\sum_{i=0}^{n_m-1}\sum_{k=0}^{n-1}(\mathbf{x}_k^{(i)})^2 \right]$
 
-```
-def cofi_cost_func(X, W, b, Y, R, lambda_):
-    """
-    Returns the cost for the content-based filtering
-    Args:
-      X (ndarray (num_movies,num_features)): matrix of item features
-      W (ndarray (num_users,num_features)) : matrix of user parameters
-      b (ndarray (1, num_users)            : vector of user parameters
-      Y (ndarray (num_movies,num_users)    : matrix of user ratings of movies
-      R (ndarray (num_movies,num_users)    : matrix, where R(i, j) = 1 if the i-th movies was rated by the j-th user
-      lambda_ (float): regularization parameter
-    Returns:
-      J (float) : Cost
-    """
-    nm, nu = Y.shape
-    J = 0
-    ### START CODE HERE ###  
-    
-    for j in range(nu):
-        w = W[j,:]
-        b_j = b[0,j]
-        for i in range(nm):
-            x = X[i,:]
-            y = Y[i,j]
-            r = R[i,j]
-            J += np.square(r * (np.dot(w,x) + b_j - y ) )
-    J = J/2    
-        
-    J += (lambda_/2) * (np.sum(np.square(W)) + np.sum(np.square(X)))
-            
-            
-            
-            
-    
-    
-    ### END CODE HERE ### 
-
-    return J
-```
-import tensorflow as tf
-
-```
+```python
 def cofi_cost_func_v(X, W, b, Y, R, lambda_):
     """
     Returns the cost for the content-based filtering
@@ -320,63 +256,40 @@ def cofi_cost_func_v(X, W, b, Y, R, lambda_):
     Returns:
       J (float) : Cost
     """
-    j = (tf.linalg.matmul(X, tf.transpose(W)) + b - Y)*R
+    j = R * (tf.linalg.matmul(X, tf.transpose(W)) + b - Y)
     J = 0.5 * tf.reduce_sum(j**2) + (lambda_/2) * (tf.reduce_sum(X**2) + tf.reduce_sum(W**2))
     return J
 ```
-
-```
+```python
 optimizer = keras.optimizers.Adam(learning_rate=1e-1)
 
 iterations = 200
 lambda_ = 1
 for iter in range(iterations):
-    # Use TensorFlow’s GradientTape
-    # to record the operations used to compute the cost 
     with tf.GradientTape() as tape:
+        cost_value = cofi_cost_func_v(X, W, b, Y_norm, R, lambda_)
 
-        # Compute the cost (forward pass included in cost)
-        cost_value = cofi_cost_func_v(X, W, b, Ynorm, R, lambda_)
-
-    # Use the gradient tape to automatically retrieve
-    # the gradients of the trainable variables with respect to the loss
     grads = tape.gradient( cost_value, [X,W,b] )
-
-    # Run one step of gradient descent by updating
-    # the value of the variables to minimize the loss.
     optimizer.apply_gradients( zip(grads, [X,W,b]) )
 
-    # Log periodically.
     if iter % 20 == 0:
         print(f"Training loss at iteration {iter}: {cost_value:0.1f}")
 ```
 
 ### Content-based filtering
 
-```
-# GRADED_CELL
-# UNQ_C1
-
+```python
 num_outputs = 32
-tf.random.set_seed(1)
-user_NN = tf.keras.models.Sequential([
-    ### START CODE HERE ###     
-  
+user_NN = tf.keras.models.Sequential([  
     tf.keras.layers.Dense(256, activation='relu'),
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(num_outputs),
-  
-    ### END CODE HERE ###  
 ])
 
-item_NN = tf.keras.models.Sequential([
-    ### START CODE HERE ###     
-  
+item_NN = tf.keras.models.Sequential([  
     tf.keras.layers.Dense(256, activation='relu'),
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(num_outputs),
-  
-    ### END CODE HERE ###  
 ])
 
 # create the user input and point to the base network
@@ -389,69 +302,15 @@ input_item = tf.keras.layers.Input(shape=(num_item_features))
 vm = item_NN(input_item)
 vm = tf.linalg.l2_normalize(vm, axis=1)
 
-# compute the dot product of the two vectors vu and vm
 output = tf.keras.layers.Dot(axes=1)([vu, vm])
 
-# specify the inputs and output of the model
 model = tf.keras.Model([input_user, input_item], output)
 
-model.summary()
-```
-```
-Model: "model"
-__________________________________________________________________________________________________
-Layer (type)                    Output Shape         Param #     Connected to                     
-==================================================================================================
-input_1 (InputLayer)            [(None, 14)]         0                                            
-__________________________________________________________________________________________________
-input_2 (InputLayer)            [(None, 16)]         0                                            
-__________________________________________________________________________________________________
-sequential (Sequential)         (None, 32)           40864       input_1[0][0]                    
-__________________________________________________________________________________________________
-sequential_1 (Sequential)       (None, 32)           41376       input_2[0][0]                    
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize/Square [(None, 32)]         0           sequential[0][0]                 
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize_1/Squa [(None, 32)]         0           sequential_1[0][0]               
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize/Sum (T [(None, 1)]          0           tf_op_layer_l2_normalize/Square[0
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize_1/Sum  [(None, 1)]          0           tf_op_layer_l2_normalize_1/Square
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize/Maximu [(None, 1)]          0           tf_op_layer_l2_normalize/Sum[0][0
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize_1/Maxi [(None, 1)]          0           tf_op_layer_l2_normalize_1/Sum[0]
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize/Rsqrt  [(None, 1)]          0           tf_op_layer_l2_normalize/Maximum[
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize_1/Rsqr [(None, 1)]          0           tf_op_layer_l2_normalize_1/Maximu
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize (Tenso [(None, 32)]         0           sequential[0][0]                 
-                                                                 tf_op_layer_l2_normalize/Rsqrt[0]
-__________________________________________________________________________________________________
-tf_op_layer_l2_normalize_1 (Ten [(None, 32)]         0           sequential_1[0][0]               
-                                                                 tf_op_layer_l2_normalize_1/Rsqrt[
-__________________________________________________________________________________________________
-dot (Dot)                       (None, 1)            0           tf_op_layer_l2_normalize[0][0]   
-                                                                 tf_op_layer_l2_normalize_1[0][0] 
-==================================================================================================
-Total params: 82,240
-Trainable params: 82,240
-Non-trainable params: 0
-__________________________________________________________________________________________________
-```
-```
-tf.random.set_seed(1)
 cost_fn = tf.keras.losses.MeanSquaredError()
 opt = keras.optimizers.Adam(learning_rate=0.01)
-model.compile(optimizer=opt,
-              loss=cost_fn)
-```
+model.compile(optimizer=opt, loss=cost_fn)
 
-```
-tf.random.set_seed(1)
 model.fit([user_train[:, u_s:], item_train[:, i_s:]], y_train, epochs=30)
 ```
-
 
 ## C3-3: Reinforcement learning
