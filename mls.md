@@ -199,8 +199,6 @@ X = np.array([[ 99,  -1],
               [103,   2]])
 
 pca = PCA(n_components=1)
-pca
-
 pca.fit(X)
 pca.explained_variance_ratio_ # returns a list of the amount of variance explained by each principal component
 ```
@@ -210,26 +208,28 @@ array([0.99244289])
 The coordinates on the first "principal component" (first axis) retain 99.24% of the information (explained variance).
 
 ```python
-pca = PCA(n_components = 2) 
-X_pca = pca.fit_transform(df) # df is a dataframe with features as columns and items as rows
-df_pca = pd.DataFrame(X_pca, columns = ['principal_component_1','principal_component_2'])
+pca = PCA(n_components=2)
+pca.fit(df) # df is a dataframe with features as columns and items as rows
+X_pca = pca.transform(df)
+df_pca = pd.DataFrame(X_pca, columns = ['principal_component_1', 'principal_component_2'])
 
 sum(pca.explained_variance_ratio_) # 0.14572843555106277
 
-plt.scatter(df_pca['principal_component_1'],df_pca['principal_component_2'], color = "#C00000")
+plt.scatter(df_pca['principal_component_1'], df_pca['principal_component_2'], color = "#C00000")
 plt.xlabel('principal_component_1')
 plt.ylabel('principal_component_2')
 plt.title('PCA decomposition')
 plt.show()
 ```
 ```python
-pca_3 = PCA(n_components = 3).fit(df)
-X_t = pca_3.transform(df)
-df_pca_3 = pd.DataFrame(X_t, columns = ['principal_component_1', 'principal_component_2', 'principal_component_3'])
+pca = PCA(n_components=3)
+pca.fit(df)
+X_pca = pca.transform(df)
+df_pca = pd.DataFrame(X_pca, columns = ['principal_component_1', 'principal_component_2', 'principal_component_3'])
 
-fig = px.scatter_3d(df_pca_3, x = 'principal_component_1',
-                              y = 'principal_component_2',
-                              z = 'principal_component_3').update_traces(marker = dict(color = "#C00000"))
+fig = px.scatter_3d(df_pca, x = 'principal_component_1',
+                            y = 'principal_component_2',
+                            z = 'principal_component_3').update_traces(marker = dict(color = "#C00000"))
 fig.show()
 ```
 
@@ -239,10 +239,14 @@ fig.show()
 - For each user, parameter vector $w^{user}$: embodies a movie taste of the user
 - For each movie, feature vector $x^{movie}$: embodies some description of the movie
 - The dot product of the two vectors plus the bias term produces an estimate of the rating the user might give to the movie.
-- $J({\mathbf{x}^{(0)},...,\mathbf{x}^{(n_m-1)},\mathbf{w}^{(0)},b^{(0)},...,\mathbf{w}^{(n_u-1)},b^{(n_u-1)}})= \left[ \frac{1}{2}\sum_{(i,j):r(i,j)=1}(\mathbf{w}^{(j)} \cdot \mathbf{x}^{(i)} + b^{(j)} - y^{(i,j)})^2 \right] + \left[ \frac{\lambda}{2} \sum_{j=0}^{n_u-1}\sum_{k=0}^{n-1}(\mathbf{w}^{(j)}_k)^2 + \frac{\lambda}{2}\sum_{i=0}^{n_m-1}\sum_{k=0}^{n-1}(\mathbf{x}_k^{(i)})^2 \right]$
+- Cost function:
+  - $J({\mathbf{x}^{(0)},...,\mathbf{x}^{(n_m-1)},\mathbf{w}^{(0)},b^{(0)},...,\mathbf{w}^{(n_u-1)},b^{(n_u-1)}}) =$
+  - $\left[ \frac{1}{2}\sum\limits_{(i,j):r(i,j)=1}(\mathbf{w}^{(j)} \cdot \mathbf{x}^{(i)} + b^{(j)} - y^{(i,j)})^2 \right]$
+  - $+\left[ \frac{\lambda}{2} \sum\limits_{j=0}^{n_u-1} \sum\limits_{k=0}^{n-1} (\mathbf{w}^{(j)}_k)^2 \right]$: regularization term 1
+  - $+\left[ \frac{\lambda}{2} \sum\limits_{i=0}^{n_m-1} \sum\limits_{k=0}^{n-1} (\mathbf{x}_k^{(i)})^2 \right]$: regularization term 2
 
 ```python
-def cofi_cost_func_v(X, W, b, Y, R, lambda_):
+def cofi_cost_func(X, W, b, Y, R, lambda_):
     """
     Returns the cost for the content-based filtering
     Vectorized for speed. Uses tensorflow operations to be compatible with custom training loop.
@@ -267,7 +271,7 @@ iterations = 200
 lambda_ = 1
 for iter in range(iterations):
     with tf.GradientTape() as tape:
-        cost_value = cofi_cost_func_v(X, W, b, Y_norm, R, lambda_)
+        cost_value = cofi_cost_func(X, W, b, Y_norm, R, lambda_)
 
     grads = tape.gradient( cost_value, [X,W,b] )
     optimizer.apply_gradients( zip(grads, [X,W,b]) )
