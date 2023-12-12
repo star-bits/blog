@@ -313,4 +313,4 @@ model.fit([user_train[:, u_s:], item_train[:, i_s:]], y_train, epochs=30)
 - $Q(s,a) = R(s) + \gamma \max_{a'}Q_i(s',a')$
   - $Q*$: optimal $Q$ function
   - $\max_{a}Q_i(s,a)$: max possible return from $Q*$ function
-- A concat of $s$ and $a$ get fed into the neural network, and $Q(s. a)$ for each possible $a$ gets out. In training the neural network, $(s, a)$ is the X, and $R(s) + \gamma \max_{a'}Q_i(s',a')$ is the y.
+- A concat of $s$ and $a$ get fed into the neural network, and $Q(s, a)$ for each possible $a$ gets out. In training the neural network, $(s, a)$ is the X, and $R(s) + \gamma \max_{a'}Q_i(s',a')$ is the y.
