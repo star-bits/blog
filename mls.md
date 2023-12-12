@@ -302,5 +302,15 @@ model.fit([user_train[:, u_s:], item_train[:, i_s:]], y_train, epochs=30)
 
 ## C3-3: Reinforcement learning
 
-
-$Q_{i+1}(s,a) = R + \gamma \max_{a'}Q_i(s',a')$
+### Deep Q-Learning
+- Bellman equation: $Q(s, a) = \text{Return}$ if you
+  - start in state $s$
+  - take action $a$ (once)
+  - then behave optimally after that
+- $\text{Return} = R_1 + \gamma R_2 + \gamma^2 R_3 + ... \text{(until terminal state)}$
+  - $R(s)$: reward in state $s$
+- $\pi (s) = a$: function that maps from states to actions
+- $Q(s,a) = R(s) + \gamma \max_{a'}Q_i(s',a')$
+  - $Q*$: optimal $Q$ function
+  - $\max_{a}Q_i(s,a)$: max possible return from $Q*$ function
+- A concat of $s$ and $a$ get fed into the neural network, and $Q(s. a)$ for each possible $a$ gets out. In training the neural network, $(s, a)$ is the X, and $R(s) + \gamma \max_{a'}Q_i(s',a')$ is the y.
