@@ -1,6 +1,7 @@
 # Stable Diffusion web UI
 
 - [stable-diffusion-webui-colab](https://github.com/star-bits/blog/blob/main/stable-diffusion-webui-colab.ipynb): Stable Diffusion web UI on Colab
+- [stable-diffusion-kohya-colab](https://github.com/star-bits/blog/blob/main/stable-diffusion-kohya-colab.ipynb): train LoRA with kohya_ss
 
 ## Model
 
