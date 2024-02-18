@@ -1,6 +1,6 @@
 # Notes from [Stephen Wolfram's blog post on ChatGPT](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)
 
-I read Stephen Wolfram's blog post on ChatGPT, but was disappointed to find that it didn't delve into technical details as much as I had hoped. It was more about NLP in general. Nonetheless, there were still some useful insights that I could salvage. Here are some of them. The following excerpts may have been condensed or rephrased for clarity.
+I've read Stephen Wolfram's blog post on ChatGPT, but was disappointed to find that it didn't delve into technical details as much as I had hoped. It was more about NLP in general. Nonetheless, there were still some useful insights that I could salvage. Here are some of them. The following excerpts may have been condensed or rephrased for clarity.
 
 > In a crawl of the web there might be a few hundred billion words; in books that have been digitized there might be another hundred billion words.
 
