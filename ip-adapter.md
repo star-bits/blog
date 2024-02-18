@@ -1,5 +1,10 @@
 # IP-Adapter
+
+## Paper
 - [IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models](https://arxiv.org/abs/2308.06721)
+
+## Run
+- [ip-adapter-colab](https://github.com/star-bits/blog/blob/main/ip-adapter-colab.ipynb)
 
 ## Decoupled cross-attention
 
