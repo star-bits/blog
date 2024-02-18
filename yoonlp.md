@@ -1,5 +1,8 @@
 # Notes from [딥 러닝을 이용한 자연어 처리 입문](https://wikidocs.net/book/2155) and [PyTorch로 시작하는 딥 러닝 입문](https://wikidocs.net/book/2788)
 
+## Codes
+- [yoonlp-codes](https://github.com/star-bits/blog/blob/main/yoonlp-codes.ipynb)
+
 ## Overfitting: how to prevent
 - 데이터 양을 늘이기
 - 모델의 복잡도 줄이기
