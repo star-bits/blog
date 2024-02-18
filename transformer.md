@@ -1,8 +1,5 @@
 # Transformer
 
-- [Intro to Transformer](https://youtu.be/XfpMkf4rD6E)
-- [Transformer in code](https://youtu.be/kCc8FmEb1nY)
-
 ## Attention
 
 - Attention is a communication mechanism allowing individual nodes (tokens) within a sequence (sentence) to interact with one another.
@@ -31,3 +28,7 @@ out = att @ v
   - `C`: vector dim of tokens
   - Transpose in `k.T` should only transpose T and C dims, but not the B dim. In actual implementations, it is `k.transpose(-2, -1)`.
 - In Self-Attention, q, k, and v comes from the same input x. In Cross-Attention, input for k and v are from the Encoder.
+
+## Sources
+
+- [Intro to Transformer](https://youtu.be/XfpMkf4rD6E), [Transformer in code](https://youtu.be/kCc8FmEb1nY)
