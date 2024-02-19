@@ -1,7 +1,7 @@
 # Stable Diffusion web UI
 
 ## Run
-- [stable-diffusion-webui-colab](https://github.com/star-bits/blog/blob/main/stable-diffusion-webui-colab.ipynb): Stable Diffusion web UI on Colab
+- [stable-diffusion-webui-colab.ipynb](https://github.com/star-bits/blog/blob/main/stable-diffusion-webui-colab.ipynb)
 
 ## Model
 
