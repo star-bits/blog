@@ -31,7 +31,7 @@
 - 가중치 초기화에 덜 민감해짐.
 - 모델이 더 복잡해지기 때문에 inference 시 실행 시간이 느려짐.
 
-## [NNLM](https://arxiv.org/pdf/1301.3781.pdf)
+## NNLM
 $\text{Input layer} \rightarrow (W_{v \times m}) \rightarrow \text{Projection layer} \rightarrow (W_{n \times m \times h}) \rightarrow \text{Hidden layer} \rightarrow (W_{h \times v}) \rightarrow \text{Output layer}$
 
 - Input layer
