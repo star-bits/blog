@@ -143,7 +143,7 @@ The ICANN (Internet Corporation for Assigned Names and Numbers) and RIRs (Region
   - `http://www.example.com`
   - `ftp://ftp.example.com`
   - `file:///home/username/path/to/your/file.txt`
-  - `mailto:example@example.com` (opens the default mail client)
+  - `mailto:example@example.com`
   - `tel:+1234567890`
   - `sms:+1234567890`
   - `magnet:?xt=urn:btih:QHQXPYWMACKDWKP47RRVIV7VOURXFE5Q&dn=My+Example+File`
