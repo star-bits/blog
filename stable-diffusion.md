@@ -15,5 +15,4 @@ In the image-to-image transformation, completely random latent noise is replaced
 
 ## Sources
 
-- [Stable Diffusion overview](https://stable-diffusion-art.com/how-stable-diffusion-work/)
-- Papers: [Diffusion](https://arxiv.org/abs/2006.11239), [Stable Diffusion](https://arxiv.org/abs/2112.10752), [ControlNet](https://arxiv.org/abs/2302.05543)
+- [Stable Diffusion overview](https://stable-diffusion-art.com/how-stable-diffusion-work/), [Diffusion paper](https://arxiv.org/abs/2006.11239), [Stable Diffusion paper](https://arxiv.org/abs/2112.10752), [ControlNet paper](https://arxiv.org/abs/2302.05543)
