@@ -147,5 +147,7 @@ The ICANN (Internet Corporation for Assigned Names and Numbers) and RIRs (Region
   - `tel:+1234567890`
   - `sms:+1234567890`
   - `magnet:?xt=urn:btih:QHQXPYWMACKDWKP47RRVIV7VOURXFE5Q&dn=My+Example+File`
-    - `xt=urn:btih:QHQXPYWMACKDWKP47RRVIV7VOURXFE5Q`: Exact Topic (`urn`: Uniform Resource Name, `btih`: BitTorrent Info Hash)
-    - `dn=My+Example+File`: Display Name
+    - `xt`: Exact Topic
+    - `urn`: Uniform Resource Name
+    - `btih`: BitTorrent Info Hash
+    - `dn`: Display Name
