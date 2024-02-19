@@ -99,8 +99,8 @@ The ICANN (Internet Corporation for Assigned Names and Numbers) and RIRs (Region
 - The configuration page of a network router contains a port forwarding or NAT table. This table maintains the mapping between internal and external IP addresses and port numbers.
 - `netstat` gives the private IP address with port number on a local device and corresponding foreign IP address with port number it's connected to.
 - Port numbers range from 0 to 65535:
-  - 0 - 1023: Well-known ports (e.g., 80, 443 for HTTP/HTTPS, 21 for FTP, 25 for SMTP)
-  - 1024 - 49151: Registered ports (registered by companies, e.g., 1101 for Adobe server, 1433 for Microsoft SQL server)
+  - 0-1023: Well-known ports (e.g., 80, 443 for HTTP/HTTPS, 21 for FTP, 25 for SMTP)
+  - 1024-49151: Registered ports (registered by companies, e.g., 1101 for Adobe server, 1433 for Microsoft SQL server)
   - 49152-65535: Dynamic or private ports (temporary ports used by clients)
 
 ### Firewall
