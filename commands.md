@@ -74,26 +74,6 @@ q
 wq
 ```
 
-## venv
-```shell
-python3 -m venv xvnv
-
-. xvnv/bin/activate
-deactivate
-
-pip freeze
-```
-
-## virtualenv
-```shell
-virtualenv --python=python3 xvlv
-
-. xvlv/bin/activate
-deactivate
-
-pip freeze
-```
-
 ## brew
 ```shell
 brew install miniconda
@@ -122,19 +102,24 @@ conda env update -n xcda -f /path/to/environment.yml
 conda env remove -n xcda
 ```
 
-## To activate virtual environment automatically:
+## venv
 ```shell
-# open `.zshrc`
-nano ~/.zshrc
-# or
-open -a TextEdit ~/.zshrc
+python3 -m venv xvnv
 
-# add the following line
 . xvnv/bin/activate
-# or
-conda activate xcda
+deactivate
 
-. ~/.zshrc
+pip freeze
+```
+
+## virtualenv
+```shell
+virtualenv --python=python3 xvlv
+
+. xvlv/bin/activate
+deactivate
+
+pip freeze
 ```
 
 ## Default Python interpreter
