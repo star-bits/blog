@@ -2,51 +2,120 @@
 
 ## Accumulative Computation (Dynamic Programming)
 
+### Subsequences
+
 ```python
-# 한 걸음에 한 단 또는 두 단 또는 세 단 올라 이 계단을 모두 올라가는 경우의 수
-
-dp = [0 for _ in range(n+1)]
-dp[0] = 1 # 시작점에 도달하는 경우의 수
-dp[1] = 1 # 첫번째 계단에 도달하는 경우의 수
-dp[2] = 2 # 두번째 계단에 도달하는 경우의 수
-
-for i in range (3, n+1):
-    # all the ways to reach the i-th step
-    dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
-
-print(dp[n])
+def lis(arr):
+    n = len(arr)
+    
+    dp = [1 for _ in range(n)]
+    
+    for i in range(1, n):
+        for j in range(i):
+            if arr[j] < arr[i] and dp[j]+1 > dp[i]:
+                # lis ending at j + element i > current lis recorded at i
+                dp[i] = dp[j]+1
+    
+    max_length = max(dp)
+    
+    lis = []
+    current_length = max_length
+    for i in range(n-1, -1, -1):
+        if dp[i] == current_length:
+            lis.append(arr[i])
+            current_length -= 1
+    
+    lis.reverse()
+    return lis
 ```
 
 ```python
-# 한 번에 한 계단 또는 두 계단씩 오르되 연속된 세 개의 계단을 모두 밟지 않고 오르면서 마지막 계단은 반드시 밟는 경우의 수
+def lcs(X, Y):
+    m = len(X)
+    n = len(Y)
+    
+    dp = [[0 for _ in range(n+1)] for _ in range(m+1)]
+    
+    for i in range(1, m+1):
+        for j in range(1, n+1):
+            if X[i-1] == Y[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    
+    lcs = ""
+    i, j = m, n
+    while i>0 and j>0:
+        if X[i-1] == Y[j-1]:
+            lcs = X[i-1] + lcs
+            i -= 1
+            j -= 1
+        elif dp[i-1][j] > dp[i][j-1]:
+            i -= 1
+        else:
+            j -= 1
+    
+    return lcs
+```
 
-dp = [0 for _ in range(n+2)]
-dp[0] = l[0] # l은 각 계단의 점수 리스트
-dp[1] = max(l[0]+l[1], l[1])
-dp[2] = max(l[0]+l[2], l[1]+l[2])
 
-for i in range(3, n):
-    dp[i] = max(dp[i-3]+l[i-1]+l[i], dp[i-2]+l[i])
+### Stairs
 
-print(dp[n-1])
+```python
+# 한 단 또는 두 단씩 올라감
+
+def max_scores(scores):
+    n = len(scores)
+
+    dp = [0 for _ in range(n)]
+    dp[0] = scores[0]
+    dp[1] = scores[0] + scores[1]
+
+    for i in range(2, n):
+        dp[i] = max(dp[i-1], dp[i-2]) + scores[i]
+
+    return dp[n-1]
 ```
 
 ```python
-# Longest Decreasing Subsequence
+# 한 단 또는 두 단씩 올라감 하지만 세 단 연속은 금지
 
-dp = [1 for _ in range(n)]
-# will eventually represent the length of the longest decreasing subsequence ending at index i
+def max_scores(scores):
+    n = len(scores)
 
-for i in range(1, n):
-    for j in range(i):
-        if arr[j] > arr[i] and dp[j]+1 > dp[i]:
-            # dp[j] + 1 > dp[i]: checks if
-            # the longest decreasing subsequence ending at j plus the element at i
-            # would be longer than the current longest subsequence recorded at i
-            dp[i] = dp[j]+1
+    dp = [0 for _ in range(n)]
+    dp[0] = scores[0]
+    dp[1] = scores[0] + scores[1]
+    dp[2] = max(scores[0] + scores[2], scores[1] + scores[2])
 
-print(max(dp))
+    for i in range(3, n):
+        dp[i] = max(dp[i-2] + scores[i], dp[i-3] + scores[i-1] + scores[i])
+
+    return dp[n-1]
 ```
+
+```python
+# 해당 단에서 올라갈 수 있는 최대 단 수의 리스트가 주어짐
+
+def variable_jump(jumps):
+    n = len(jumps)
+    
+    dp = [float('inf')] * n
+    dp[0] = 0
+
+    for i in range(1, n):
+        for j in range(i):
+            if j+jumps[j] >= i:
+                dp[i] = min(dp[i], dp[j]+1)
+
+    return dp[n-1] if dp[n-1]!=float('inf') else -1
+```
+
+### Coins
+
+
+
+
 
 ## 백준용 파이썬 템플릿
 
