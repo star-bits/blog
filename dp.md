@@ -60,8 +60,12 @@ def input():
 # import sys
 # input = sys.stdin.readline
 ```
+## Clever
 
-## Combination and Permutation
+## key=lambda x
+
+
+## itertools
 
 
 ## More DFS and BFS
