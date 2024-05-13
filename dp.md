@@ -58,13 +58,12 @@ def lcs(X, Y):
     return lcs
 ```
 
-
-### Stairs
+### Stairs 
 
 ```python
 # 한 단 또는 두 단씩 올라감
 
-def max_scores(scores):
+def max_score(scores):
     n = len(scores)
 
     dp = [0 for _ in range(n)]
@@ -80,7 +79,7 @@ def max_scores(scores):
 ```python
 # 한 단 또는 두 단씩 올라감 하지만 세 단 연속은 금지
 
-def max_scores(scores):
+def max_score(scores):
     n = len(scores)
 
     dp = [0 for _ in range(n)]
@@ -111,11 +110,49 @@ def variable_jump(jumps):
     return dp[n-1] if dp[n-1]!=float('inf') else -1
 ```
 
-### Coins
+### Coins 
 
+```python
+target = 5
+coin_types = [1, 2, 5]
 
+def num_combinations(target, coin_types):
+    dp = [1] + [0 for _ in range(target)]
+    
+    for coin_type in coin_types:
+        for i in range(coin_type, target+1):
+            dp[i] += dp[i-coin_type]
+    
+    return dp[target]
+```
 
+```python
+target = 11
+coins = [1, 5, 5, 6]
 
+def target_sum(target, coins):
+    dp = [True] + [False for _ in range(target)]
+    
+    for coin in coins:
+        for i in range(target, coin-1, -1):
+            dp[i] = dp[i] or dp[i-coin]
+    
+    return dp[target]
+```
+
+```python
+target = 11
+coins = [1, 5, 5, 6]
+
+def target_sum(target, coins):
+    dp = [1] + [0 for _ in range(target)]
+
+    for coin in coins:
+        for i in range(target, coin-1, -1):
+            dp[i] += dp[i-coin]
+
+    return dp[target]
+```
 
 ## 백준용 파이썬 템플릿
 
@@ -129,7 +166,7 @@ def input():
 # import sys
 # input = sys.stdin.readline
 ```
-## Clever
+## Clever approaches
 
 ## key=lambda x
 
