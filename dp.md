@@ -178,9 +178,7 @@ def min_cost(s):
 ## key=lambda x
 
 ```python
-l = sorted(l, key=lambda x: (x[0], -x[1])) # [0]은 내림차순, [1]은 오름차순
-
-max(d.items(), key=lambda x: x[1])[0]
+sl = sorted(l, key=lambda x: (x[0], -x[1])) # [0]은 내림차순, [1]은 오름차순
 
 nd = d.copy()
 
@@ -191,6 +189,12 @@ sd = dict(sorted(d.items(), reverse=True))
 sd = dict(sorted(d.items(), key=lambda x: x[1], reverse=True))
 
 fd = {k: v for k, v in d.items() if v>3}
+
+mv = max(d.items(), key=lambda x: x[1])[0]
+
+lk = list(d) # list of d is a list of keys of d
+
+mv = min(d, key=lambda x: (-d[x], x)) # min iterates over each key in d
 ```
 
 
