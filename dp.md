@@ -72,7 +72,7 @@ def max_scores(scores):
     dp[1] = scores[0] + scores[1]
 
     for i in range(2, n):
-        dp[i] = max(dp[i-1], dp[i-2]) + scores[i]
+        dp[i] = max(dp[i-1] + scores[i], dp[i-2] + scores[i])
 
     return dp[n-1]
 ```
