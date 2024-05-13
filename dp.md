@@ -1,18 +1,5 @@
 # DP
 
-## 백준용 파이썬 템플릿
-
-```python
-data = """"""
-inputs = iter(data.split('\n'))
-
-def input():
-    return next(inputs)
-
-# import sys
-# input = sys.stdin.readline
-```
-
 ## Accumulative Computation (Dynamic Programming)
 
 ```python
@@ -59,6 +46,19 @@ for i in range(1, n):
             dp[i] = dp[j]+1
 
 print(max(dp))
+```
+
+## 백준용 파이썬 템플릿
+
+```python
+data = """"""
+inputs = iter(data.split('\n'))
+
+def input():
+    return next(inputs)
+
+# import sys
+# input = sys.stdin.readline
 ```
 
 ## Combination and Permutation
