@@ -272,7 +272,7 @@ class Affine:
 
 ### Softmax-with-Loss
 
-Softmax의 손실 함수로 Cross Entropy Error를 사용하면 역전파가 $(y_1-t, y_2-t, y_3-t)$로 말끔히 떨어짐
+Softmax의 손실 함수로 Cross Entropy Error를 사용하면 역전파가 $(y_1-t, y_2-t, y_3-t)$로 말끔히 떨어짐 ⭐
 
 $L = -(t \log(y) + (1-t) \log(1-y))$
 
@@ -282,7 +282,7 @@ $y = \frac{1}{1+\exp(-x)}$
 
 $\frac{\partial y}{\partial x} = y(1-y)$
 
-$\frac{\partial L}{\partial x} = \frac{\partial L}{\partial y} \frac{\partial y}{\partial x} = \left( - \frac{t}{y} + \frac{1-t}{1-y} \right) \cdot y(1-y) = y-t$
+$\frac{\partial L}{\partial x} = \frac{\partial L}{\partial y} \frac{\partial y}{\partial x} = \left( - \frac{t}{y} + \frac{1-t}{1-y} \right) \cdot y(1-y) = y-t$ ⭐
 
 ```python
 class SoftmaxWithLoss:
