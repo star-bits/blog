@@ -166,7 +166,7 @@ def input():
 # import sys
 # input = sys.stdin.readline
 ```
-## Clever approaches
+## Code Gems
 
 ```python
 # Minimum Cost to Make All Characters Equal
