@@ -302,6 +302,130 @@ dfs(n, m)
 
 ## More DFS and BFS
 
+```python
+# Max Depth
+
+visited = [False for _ in range(n+1)]
+def bfs(start):
+    num = 0
+    q = deque()
+    q.append(start)
+    visited[start] = True
+
+    while q:
+        v = q.popleft()
+        for nv in graph[v]:
+            if not visited[nv]:
+                visited[nv] = True
+                q.append(nv)
+                num += 1
+
+    return num
+
+bfs(start)        
+```
+
+```python
+# Max Depth
+
+num = 0
+visited = [False for _ in range(n+1)]
+def dfs(v):
+    global num
+    visited[v] = True
+
+    for nv in graph[v]:
+        if not visited[nv]:
+            num += 1
+            dfs(nv)
+
+dfs(start)
+```
+
+```python
+# Number of Connected Components
+
+from collections import deque
+
+graph = [[] for _ in range(n+1)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+num = 0
+visited = [False for _ in range(n+1)]
+def bfs(v):
+    q = deque()
+    q.append(v)
+    visited[v] = True
+
+    while q:
+        v = q.popleft()
+        for nv in graph[v]:
+            if not visited[nv]:
+                q.append(nv)
+                visited[nv] = True
+
+for v in range(1, n+1):
+    if not visited[v]:
+        num += 1
+        bfs(v)
+```
+
+```python
+# Number of Connected Components
+
+from collections import deque
+
+rows, cols = len(grid), len(grid[0])
+
+num = 0
+visited = set()
+def bfs(r, c):
+    q = deque()
+    q.append((r, c))
+    visited.add((r, c))
+
+    while q:
+        r, c = q.popleft()
+        nd = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        for dr, dc in nd:
+            nr, nc = r+dr, c+dc
+            if 0<=nr<rows and 0<=nc<cols and grid[nr][nc]=='1' and (nr, nc) not in visited:
+                q.append((nr, nc))
+                visited((nr, nc))
+
+for r in range(rows):
+    for c in range(cols):
+        if grid[r][c]=='1' and (r, c) not in visited:
+            num += 1
+            bfs(r, c)
+```
+
+```python
+# Number of Connected Components
+
+rows, cols = len(grid), len(grid[0])
+
+num = 0
+visited = set()
+def dfs(r, c):
+    visited.add((r, c))
+    
+    nd = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    for dr, dc in nd:
+        nr, nc = r+dr, c+dc
+        if 0<=nr<rows and 0<=nc<cols and grid[nr][nc]=='1' and (nr, nc) not in visited:
+            dfs(nr, nc)
+
+for r in range(rows):
+    for c in range(cols):
+        if grid[r][c]=='1' and (r, c) not in visited:
+            num += 1
+            dfs(r, c)
+```
+
 ## More Graph
 
 ## Even More Graph (Shortest Path)
