@@ -203,6 +203,17 @@ def reverse(l):
     return eval(out)
 ```
 
+```python
+# 덩치 등수
+
+for i in l:
+    rank = 1
+    for j in l:
+        if i[0]<j[0] and i[1]<j[1]:
+            rank += 1
+    print(rank)
+```
+
 ## key=lambda x
 
 ```python
@@ -247,6 +258,8 @@ for combination in combinations(range(1, n+1), m):
 ```
 
 ```python
+# combination
+
 def dfs(n, m, start=1, seq=None):
     if seq is None:
         seq = []
@@ -264,6 +277,8 @@ dfs(n, m)
 ```
 
 ```python
+# permutation
+
 def dfs(n, m, start=1, seq=None, used=None):
     if seq is None:
         seq = []
@@ -288,3 +303,69 @@ dfs(n, m)
 ## More DFS and BFS
 
 ## More Graph
+
+## Even More Graph (Shortest Path)
+
+```python
+import heapq
+
+def dijkstra(graph, start):
+    distances = {node: float('inf') for node in graph}
+    distances[start] = 0
+
+    pq = [(0, start)]
+    while pq:
+        current_cost, current_node = heapq.heappop(pq)
+
+        if current_cost > distances[current_node]:
+            continue
+
+        for neighbor, weight in graph[current_node]:
+            new_cost = current_cost + weight
+
+            if new_cost < distances[neighbor]:
+                distances[neighbor] = new_cost
+                heapq.heappush(pq, (new_cost, neighbor))
+
+    return distances
+```
+
+```python
+def bellman_ford(graph, start):
+    distances = {node: float('inf') for node in graph}
+    distances[start] = 0
+
+    # Relax edges |V| - 1 times
+    for _ in range(len(graph) - 1):
+        for node in graph:
+            for neighbor, weight in graph[node]:
+                if distances[node] + weight < distances[neighbor]:
+                    distances[neighbor] = distances[node] + weight
+
+    # Check for negative-weight cycles
+    for node in graph:
+        for neighbor, weight in graph[node]:
+            if distances[node] + weight < distances[neighbor]:
+                raise ValueError("Graph contains a negative-weight cycle")
+
+    return distances
+```
+
+```python
+def floyd_warshall(graph):
+    nodes = list(graph.keys())
+    distances = {node: {neighbor: float('inf') for neighbor in nodes} for node in nodes}
+    for node in nodes:
+        distances[node][node] = 0
+        for neighbor, weight in graph[node]:
+            distances[node][neighbor] = weight
+
+    for i in nodes:
+        for a in nodes:
+            for b in nodes:
+                # Compare the cost of the a -> i -> b route with the direct a -> b route
+                if distances[a][b] > distances[a][i] + distances[i][b]:
+                    distances[a][b] = distances[a][i] + distances[i][b]
+
+    return distances
+```
