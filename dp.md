@@ -175,6 +175,34 @@ def min_cost(s):
     return sum(min(i, len(s)-i) for i in range(1, len(s)) if s[i]!=s[i-1])
 ```
 
+```python
+# Reverse a Nested List
+
+l = [1, [2, 3, [4, 5]]]
+
+def reverse(l):
+    if not isinstance(l, list):
+        return l
+
+    return [reverse(i) for i in l[::-1]]
+
+```
+
+```python
+l = [1, [2, 3, [4, 5]]]
+
+def reverse(l):
+    out = ""
+    for i in str(l)[::-1]:
+        if i=='[':
+            out += ']'
+        elif i==']':
+            out += '['
+        else:
+            out += i
+    return eval(out)
+```
+
 ## key=lambda x
 
 ```python
@@ -197,9 +225,65 @@ lk = list(d) # list of d is a list of keys of d
 mv = min(d, key=lambda x: (-d[x], x)) # min iterates over each key in d
 ```
 
-
 ## itertools
 
+```python
+# product returns an iterator that yields tuples containing one item from each input iterable
+
+from itertools import product
+
+candidates = [[3, 4], [-1], [10, 11, 12], [-1], [1, 2]]
+
+print(min(product(*candidates)))
+```
+
+```python
+# 1부터 n까지의 자연수 중 중복 없이 m개를 고른 수열
+
+from itertools import combinations
+
+for combination in combinations(range(1, n+1), m):
+    print(combination)
+```
+
+```python
+def dfs(n, m, start=1, seq=None):
+    if seq is None:
+        seq = []
+
+    if len(seq)==m:
+        print(seq)
+        return
+    
+    for i in range(start, n+1):
+        seq.append(i)
+        dfs(n, m, i+1, seq)
+        seq.pop()
+
+dfs(n, m)
+```
+
+```python
+def dfs(n, m, start=1, seq=None, used=None):
+    if seq is None:
+        seq = []
+    if used is None:
+        used = [False] * (n + 1)
+
+    if len(seq)==m:
+        print(seq)
+        return
+    
+    for i in range(start, n+1):
+        if not used[i]:
+            seq.append(i)
+            used[i] = True
+            dfs(n, m, start, seq, used)
+            seq.pop()
+            used[i] = False
+
+dfs(n, m)
+```
 
 ## More DFS and BFS
 
