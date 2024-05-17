@@ -180,11 +180,11 @@ def min_cost(s):
 
 l = [1, [2, 3, [4, 5]]]
 
-def reverse(l):
+def reverse_list(l):
     if not isinstance(l, list):
         return l
 
-    return [reverse(i) for i in l[::-1]]
+    return [reverse_list(i) for i in l[::-1]]
 
 ```
 
@@ -193,7 +193,7 @@ def reverse(l):
 
 l = [1, [2, 3, [4, 5]]]
 
-def reverse(l):
+def reverse_list(l):
     out = ""
     for i in str(l)[::-1]:
         if i=='[':
