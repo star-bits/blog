@@ -5,14 +5,14 @@
 
 ## Model
 
-- [v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5) [*v1-5-pruned-emaonly.ckpt*](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt)
-- [v1.5 inpainting](https://huggingface.co/runwayml/stable-diffusion-inpainting) [*sd-v1-5-inpainting.ckpt*](https://huggingface.co/runwayml/stable-diffusion-inpainting/resolve/main/sd-v1-5-inpainting.ckpt)
-- [Dreamlike Photoreal](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0) [*dreamlike-photoreal-2.0.safetensors*](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0/resolve/main/dreamlike-photoreal-2.0.safetensors)
-- [Realistic Vison](https://civitai.com/models/4201/realistic-vision-v20) [*realisticVisionV51_v51VAE.safetensors*](https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=pruned&fp=fp16)
-- [Dreamshaper](https://civitai.com/models/4384/dreamshaper) [*dreamshaper_8.safetensors*](https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16)
-- [PerfectDeliberate](https://civitai.com/models/24350/perfectdeliberate) [*perfectdeliberate_v40.safetensors*](https://civitai.com/api/download/models/86698?type=Model&format=SafeTensor&size=full&fp=fp32)
-- [Lyriel](https://civitai.com/models/22922/lyriel) [*lyriel_v16.safetensors*](https://civitai.com/api/download/models/72396)
-- [Anything](https://civitai.com/models/9409) [*AnythingV5Ink_ink.safetensors*](https://civitai.com/api/download/models/90854?type=Model&format=SafeTensor&size=full&fp=fp16)
+- [v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5) (*download:* [*v1-5-pruned-emaonly.ckpt*](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt))
+- [v1.5 inpainting](https://huggingface.co/runwayml/stable-diffusion-inpainting) (*download:* [*sd-v1-5-inpainting.ckpt*](https://huggingface.co/runwayml/stable-diffusion-inpainting/resolve/main/sd-v1-5-inpainting.ckpt))
+- [Dreamlike Photoreal](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0) (*download:* [*dreamlike-photoreal-2.0.safetensors*](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0/resolve/main/dreamlike-photoreal-2.0.safetensors))
+- [Realistic Vison](https://civitai.com/models/4201/realistic-vision-v20) (*download:* [*realisticVisionV51_v51VAE.safetensors*](https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=pruned&fp=fp16))
+- [Dreamshaper](https://civitai.com/models/4384/dreamshaper) (*download:* [*dreamshaper_8.safetensors*](https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16))
+- [PerfectDeliberate](https://civitai.com/models/24350/perfectdeliberate) (*download:* [*perfectdeliberate_v40.safetensors*](https://civitai.com/api/download/models/86698?type=Model&format=SafeTensor&size=full&fp=fp32))
+- [Lyriel](https://civitai.com/models/22922/lyriel) (*download:* [*lyriel_v16.safetensors*](https://civitai.com/api/download/models/72396))
+- [Anything](https://civitai.com/models/9409) (*download:* [*AnythingV5Ink_ink.safetensors*](https://civitai.com/api/download/models/90854?type=Model&format=SafeTensor&size=full&fp=fp16))
 
 Model size ranges from 2 to 7 GB. *Why do they vary? Don't they share the exact same network?*
 
