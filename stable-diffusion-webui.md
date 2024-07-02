@@ -1,8 +1,5 @@
 # Stable Diffusion web UI
 
-## Run
-- [stable-diffusion-webui-colab.ipynb](https://github.com/star-bits/blog/blob/main/stable-diffusion-webui-colab.ipynb)
-
 ## Model
 
 - [v1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5) (*download:* [*v1-5-pruned-emaonly.ckpt*](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt))
