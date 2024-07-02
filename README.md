@@ -1,6 +1,6 @@
 # blog
 
-## On Front Page
+## On the Front Page
 
 - [entropy.md](https://github.com/star-bits/blog/blob/main/entropy.md): average amount of disorder/surprisal in a system
 - [gradient.md](https://github.com/star-bits/blog/blob/main/gradient.md): dL/dw, numerical gradient, backprop
@@ -19,7 +19,7 @@
 - [ip-adapter.md](https://github.com/star-bits/blog/blob/main/ip-adapter.md): image prompt using decoupled cross-attention
 - [mls.md](https://github.com/star-bits/blog/blob/main/mls.md): notes from the Machine Learning Specialization course
 
-## Not on Front Page
+## Not on the Front Page
 
 - [commands.md](https://github.com/star-bits/blog/blob/main/commands.md)
 - [classics.ipynb](https://github.com/star-bits/blog/blob/main/classics.ipynb)
