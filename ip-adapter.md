@@ -1,8 +1,5 @@
 # IP-Adapter
 
-## Run
-- [ip-adapter-colab.ipynb](https://github.com/star-bits/blog/blob/main/ip-adapter-colab.ipynb)
-
 ## Decoupled cross-attention
 
 In the vanilla Stable Diffusion model, a sentence is processed by the Text Encoder and converted into Text Features. These Text Features serve as the k and v in cross-attention and are fed into denoising U-Net to steer the noise predictor. In contrast, with IP-Adapter, Image Features, alongside Text Features, are also fed into denoising U-Net. An image first passes through a pretrained Image Encoder. The output from the Image Encoder then proceeds through a trainable linear layer and a layer normalization layer, resulting in Image Features. These Image Features are also used as k and v in cross-attention, but here's a caveat: this cross-attention is a separate cross-attention specifically for Image Features -- that's why this is called "decoupled cross-attention". The outputs of two different cross-attentions are then added and fed into denoising U-Net.
