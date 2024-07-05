@@ -2,6 +2,9 @@
 
 목표: $\frac{\partial L}{\partial w}$ 구하기
 
+## Overview
+![backprop](https://github.com/star-bits/blog/assets/93939472/7888223f-49b0-4d5e-80df-659965baa995)
+
 ## Numerical gradient
 
 ### Simple numerical gradient with independent variable w
