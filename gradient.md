@@ -1,4 +1,4 @@
-# [Gradient](https://github.com/star-bits/blog/blob/main/gradient.ipynb)
+# Gradient
 
 목표: $\frac{\partial L}{\partial w}$ 구하기
 
@@ -75,6 +75,10 @@ $z \rightarrow y$
 $y, t \rightarrow loss$
 
 ```python
+# https://github.com/WegraLee/deep-learning-from-scratch/blob/master/common/functions.py
+# https://github.com/WegraLee/deep-learning-from-scratch/blob/master/common/gradient.py
+
+
 class simpleNet:
     def __init__(self):
         self.W = np.random.randn(2, 3)
@@ -113,9 +117,7 @@ print(dW)
  [ 0.06299853  0.80415992 -0.86715845]]
 ```
 
-## Backprop
-
-### Addition
+## Addition
 
 $z = x + y$
 
@@ -131,7 +133,7 @@ $\frac{\partial L}{\partial z} \cdot 1, \frac{\partial L}{\partial z} \cdot 1 \l
 
 덧셈노드의 역전파는 상류의 값을 그대로 하류로 흘려보냄
 
-### Multiplication
+## Multiplication
 
 $z = xy$
 
@@ -147,7 +149,36 @@ $\frac{\partial L}{\partial z} \cdot y, \frac{\partial L}{\partial z} \cdot x \l
 
 곱셈노드의 역전파는 순전파 때의 값을 서로 바꿔 곱해 하류로 흘려보냄
 
-### ReLU
+## Affine transformation
+
+$X \cdot W + B = Y$
+
+$\frac{\partial L}{\partial X} = \frac{\partial L}{\partial Y} \cdot W^T$, $\frac{\partial L}{\partial W} = X^T \cdot \frac{\partial L}{\partial Y}$, $\frac{\partial L}{\partial B} = \frac{\partial L}{\partial Y}$ ⭐
+
+```python
+class Affine:
+    def __init__(self, W, b):
+        self.W = W
+        self.b = b
+        self.x = None
+        self.dW = None
+        self.db = None
+        
+    def forward(self, x):
+        self.x = x
+        out = np.dot(x, self.W) + self.b
+        
+        return out
+    
+    def backward(self, dout):
+        dx = np.dot(dout, self.W.T) # ⭐
+        self.dW = np.dot(self.x.T, dout) # ⭐
+        self.db = np.sum(dout, axis=0) # ⭐
+        
+        return dx
+```
+
+## ReLU
 
 $$
 y = \begin{cases}
@@ -201,7 +232,7 @@ class Relu:
         return dx
 ```
 
-### Sigmoid
+## Sigmoid
 
 $y = \frac{1}{1 + \exp(-x)}$
 
@@ -244,36 +275,7 @@ class Sigmoid:
         return dx
 ```
 
-### Affine
-
-$X \cdot W + B = Y$
-
-$\frac{\partial L}{\partial X} = \frac{\partial L}{\partial Y} \cdot W^T$, $\frac{\partial L}{\partial W} = X^T \cdot \frac{\partial L}{\partial Y}$, $\frac{\partial L}{\partial B} = \frac{\partial L}{\partial Y}$ ⭐
-
-```python
-class Affine:
-    def __init__(self, W, b):
-        self.W = W
-        self.b = b
-        self.x = None
-        self.dW = None
-        self.db = None
-        
-    def forward(self, x):
-        self.x = x
-        out = np.dot(x, self.W) + self.b
-        
-        return out
-    
-    def backward(self, dout):
-        dx = np.dot(dout, self.W.T) # ⭐
-        self.dW = np.dot(self.x.T, dout) # ⭐
-        self.db = np.sum(dout, axis=0) # ⭐
-        
-        return dx
-```
-
-### Softmax-with-Loss
+## Softmax-with-Loss
 
 Softmax의 손실 함수로 Cross Entropy Error를 사용하면 역전파가 $(y_1-t, y_2-t, y_3-t)$로 말끔히 떨어짐 ⭐
 
@@ -308,9 +310,13 @@ class SoftmaxWithLoss:
         return dx
 ```
 
-### Complete neural network
+## Complete neural network
 
 ```python
+# https://github.com/WegraLee/deep-learning-from-scratch/blob/master/common/layers.py
+# https://github.com/WegraLee/deep-learning-from-scratch/blob/master/dataset/mnist.py
+
+
 from collections import OrderedDict
 
 
