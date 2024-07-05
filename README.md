@@ -20,7 +20,7 @@
 
 - [commands.md](https://github.com/star-bits/blog/blob/main/commands.md)
 - [classics.ipynb](https://github.com/star-bits/blog/blob/main/classics.ipynb)
-- [dp.md](https://github.com/star-bits/blog/blob/main/dp.md)
+- [dp.md](https://github.com/star-bits/blog/blob/main/dp.md): accumulative computation
 - [fastbook.md](https://github.com/star-bits/blog/blob/main/fastbook.md)
 - [yoonlp.md](https://github.com/star-bits/blog/blob/main/yoonlp.md)
 - [yoonlp-codes.ipynb](https://github.com/star-bits/blog/blob/main/yoonlp-codes.ipynb)
