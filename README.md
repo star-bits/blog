@@ -13,8 +13,8 @@
 - [matplotlib.ipynb](https://github.com/star-bits/blog/blob/main/matplotlib.ipynb): state-based vs. object-oriented
 - [mbyn.md](https://github.com/star-bits/blog/blob/main/mbyn.md): representation of m by n matrix in math, python, numpy
 - [transformer.md](https://github.com/star-bits/blog/blob/main/transformer.md): attention
-- [decoder.ipynb](https://github.com/star-bits/blog/blob/main/decoder.ipynb): small gpt from scratch, in code
-- [tokenizer.ipynb](https://github.com/star-bits/blog/blob/main/tokenizer.ipynb): unicode code point, UTF-8, BPE
+- [decoder.ipynb](https://github.com/star-bits/blog/blob/main/decoder.ipynb): small GPT from scratch, in code
+- [tokenizer.ipynb](https://github.com/star-bits/blog/blob/main/tokenizer.ipynb): Unicode code point, UTF-8, BPE
 - [stable-diffusion.md](https://github.com/star-bits/blog/blob/main/stable-diffusion.md): steering the noise predictor in latent space
 - [ip-adapter.md](https://github.com/star-bits/blog/blob/main/ip-adapter.md): image prompt using decoupled cross-attention
 - [mls.md](https://github.com/star-bits/blog/blob/main/mls.md): notes from the Machine Learning Specialization course
