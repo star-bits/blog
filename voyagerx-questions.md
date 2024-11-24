@@ -1,5 +1,15 @@
 # voyagerx-questions
 
+on o1-preview
+
+```
+answer these deep learning questions. think in english. then write in korean. write in 개조식.
+```
+
+```
+now answer these questions again, but this time go way deeper. give richier explanations. expand upon each bullet points. if applicable, provide follow-up questions, and then answer them. if in the previous response you've answered using technical terms, explain them also.
+```
+
 ## DL-1
 
 ```
