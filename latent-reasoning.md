@@ -18,7 +18,8 @@
   - Stage 2: `[Question] <bot> [Thought] [Thought] <eot> [Step 3] ... [Step N] [Answer]`
   - Stage N: `[Question] <bot> [Thought] [Thought] ... [Thought] <eot> [Answer]`
 - 우리가 원하는 건 n개의 `[Thought]` 토큰을 통해 생각을 하고, 마지막에 답을 내는 것.
-- 이 과정을 만들어 내기 위해서 각 stage마다 수 epoch씩 train을 함.
+- Training data에 있는 자연어 CoT step들을 stage마다 thought token으로 바꿔감.
+- 이 과정을 만들어 내기 위해서 각 stage마다 수 epoch씩 train을 함.
 - 사용한 데이터셋: GSM8k, ProntoQA, ProsQA (직접 만든 ProntoQA의 변형)
 
 ## 생각
