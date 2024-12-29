@@ -23,9 +23,11 @@ $$
 - 두 종류의 k, v를 먼저 concat하고 각각 cross attention을 하면 significantly diminishes performance.
 - 하나의 cross-attention만 쓰면 results in a loss of image-specific information.
 
-![Figure 9](https://github.com/star-bits/blog/assets/93939472/0efff47d-f691-434c-9172-b1fa26f08262)
-
 ## 생각
 - 이미지의 특징을 던져주고 텍스트 프롬프트로 컨디셔닝 하는 것이 이미지 생성 용례 중 사용성이 가장 높은 편이고,
-- 유사한 접근 중 가장 방법론이 깔끔하며,
-- 독보적으로 결과물이 좋음.
+- 유사한 시도 중 가장 방법론이 깔끔하며,
+- 독보적으로 정성적 결과물이 좋음.
+  
+![Figure 9](https://github.com/star-bits/blog/assets/93939472/0efff47d-f691-434c-9172-b1fa26f08262)
+
+
