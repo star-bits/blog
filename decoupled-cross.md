@@ -13,7 +13,7 @@ $$\text{where } Z = \text{Query Features}, \quad c_t = \text{Text Features}, \qu
 ![Figure 2](https://github.com/star-bits/blog/assets/93939472/89793dad-ad5e-42c0-95a9-09b0f7daa61f)
 
 - 두 종류의 K, V를 먼저 concat하고 각각 cross-attention을 하면 퀄리티가 확연히 낮아진다고 함.
-- 하나의 cross-attention만 쓰면 results in a loss of image-specific information.
+- 하나의 cross-attention만 쓰면 image-specific information을 잃어버림.
 
 ## 생각
 - 원하는 이미지의 특징을 던져주고 텍스트 프롬프트로 컨디셔닝 하는 것이 이미지 생성 용례 중 사용성이 가장 높은 편이고,
