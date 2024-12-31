@@ -20,6 +20,7 @@
 - autoregressive generation nature of CoT makes it challenging to mimic human reasoning on more complex problems which typically require planning and search (LeCun, 2022; Hao et al., 2023).
 - pretraining the model by randomly inserting a learnable <pause> token to the training corpus (Goyal et al., 2023).
 - iCoT (Deng et al., 2024).
+- "internalize" CoT
 
 ## 그래서 어떻게 만들었다는 걸까
 ![scrsht 2024-12-29 at 20 19 18](https://github.com/user-attachments/assets/338e2de1-70eb-4aff-a030-cb59ca4fe951)
