@@ -1,5 +1,5 @@
-# Latent Diffusion
-- [Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239) (Diffusion paper)
+# Latent Diffusion 
+- [Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239) (Diffusion model paper)
 - [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752) (Stable Diffusion paper)
 - [Adding Conditional Control to Text-to-Image Diffusion Models](https://arxiv.org/pdf/2302.05543) (ControlNet paper)
 
