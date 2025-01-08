@@ -54,7 +54,18 @@ the fundamental limits of socratic learning
 
 ## 어떻게 구현할 것인가 - Language Game
 self-play
+wittgenstein's notion of language games
+it is not the words that capture meaning, but only the interactive nature of language can do so.
+language game. interaction of one or more agents that have language as inputs and outputs. scalar scoring function.
+scalable mechanism for unbounded interactive data generation and self-play
+logical consequence of the converage and feedback conditions; there is no form of interactive generation with tractiabel feedback that is not a language game
 
+
+circle of philosophers
+narrow game -> reliable score function
+no individual lanuage game is perfectly aligned. filter the many games according to whether they make an overall net-positive condtrivution
+meta-critic that can judge which games should be played
+structural leniency that give the language games framework a vast potential to scale.
 
 ## 생각
 
@@ -67,3 +78,10 @@ self-play
 다른 특별한 방법 (모델의 구조를 바꾸는 - latent vector를 활용하거나, latent diffusion을 적용하거나)이 필요없나? 
 그냥 적절한 메트릭으로 모델끼리 대화를 하게 하면서 데이터를 생성하고, 그 데이터를 다시 훈련에 활용하는 방법만으로 A-Superhuman-I가 가능할까?
 인간의 reasoning 방법을 생각해보면 다른 무언가가 필요해보임..
+
+self-train
+숨에서 자기 머릿속을 들여다보듯이
+우주도 가만히 두면 알아서 지성체들이 등장하더라
+여기서 오는 완결성
+
+recursive self-improvement in a closed system
