@@ -10,7 +10,7 @@ $$Z^{\text{new}} = \text{Softmax}\left(\frac{QK^T}{\sqrt{d}}\right)V + \text{Sof
 $$\text{where } Q = ZW_q, \quad K = c_t W_k, \quad V = c_t W_v, \quad K' = c_i W_k', \quad V' = c_i W_v'$$
 $$\text{where } Z = \text{Query Features}, \quad c_t = \text{Text Features}, \quad c_i = \text{Image Features}$$
 
-![Figure 2](https://github.com/star-bits/blog/assets/93939472/89793dad-ad5e-42c0-95a9-09b0f7daa61f)
+![fig2](https://github.com/star-bits/blog/assets/93939472/89793dad-ad5e-42c0-95a9-09b0f7daa61f)
 
 - 두 종류의 K, V를 먼저 concat하고 각각 cross-attention을 하면 퀄리티가 확연히 낮아진다고 함.
 - 하나의 cross-attention만 쓰면 image-specific information을 잃어버림.
@@ -20,6 +20,6 @@ $$\text{where } Z = \text{Query Features}, \quad c_t = \text{Text Features}, \qu
 - decoupled cross-attention을 사용한 이 방법이 유사한 시도 중 가장 방법론이 깔끔하며,
 - 독보적으로 정성적 결과물이 좋음.
   
-![Figure 9](https://github.com/star-bits/blog/assets/93939472/0efff47d-f691-434c-9172-b1fa26f08262)
+![fig9](https://github.com/star-bits/blog/assets/93939472/0efff47d-f691-434c-9172-b1fa26f08262)
 
 
