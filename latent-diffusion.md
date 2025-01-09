@@ -12,7 +12,8 @@
 - 이 latent representation이 computational load를 order of magnitude로 줄임.
 - U-Net 구조를 사용함. Stable Diffusion v1은 512x512 크기의 이미지를 생성함. 
 
-![스크린샷 2023-10-20 140309](https://github.com/star-bits/blog/assets/93939472/cb1ecaae-254a-48f9-9b19-d0c0bd30460f)
+![fig3](https://github.com/user-attachments/assets/d9780620-8214-45d0-b4ef-c3af8025ebec)
+
 
 ## Conditioning: Text-prompt, LoRA, ControlNet, image-to-image
 - 이 noise prediction을 해 나가는 과정에 있어 predictor의 steering에 가이던스를 줄 수 있어야 원하는 이미지를 생성할 수 있음. (당연히..)
