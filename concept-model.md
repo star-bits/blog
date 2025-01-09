@@ -42,3 +42,6 @@
 - continuous end-to-end stream of vector representation으로 깔끔하게 latent reasoning을 했으면 좋겠다.
 - next sentence prediction이 아니라 생각 전체를 다 하고 이후 일필휘지로 갈기는 게 더 직관적. 생각을 마치고.
 - 그 생각의 흐름은 diffusion으로 하는거. diffusion 활용은 굉장히 직관적으로 합리적이고 매력적.
+- thought의 latent diffusion 상에서 생각이 얼마나 변하는지 제어한다면 연속적인 생각들 간의 information density를 uniform하게 조정할 수 있지 않을까.
+- latent diffusion 상에서 변화하는 생각의 방향을 decoupled cross attention으로 넣어줄 수 있나? 근데 그러면 각 생각의 방향을 symbolic하게 인위적으로 구분해서 넣어줘야 할 것. 깔끔하진 않네.
+- diffusion models seems to be able to extrapolate, whereas llms seems to only capable of interpolation.
