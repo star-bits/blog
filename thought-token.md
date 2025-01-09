@@ -35,3 +35,4 @@
 - 정말로 생각은 latent space상에서 하고, 벡터가 생각의 흐름에 따라 변형된 뒤 그 생각을 마지막에 word token으로 decoding 하는 방식이 필요해 보임.
 - 마치 stable diffusion처럼 latent space상에서 생각을 여러 방향으로 steer하고, 그 적절한 steering direction을 RL로 찾아낼 수 있지 않을까.
 - 일단 steering에 필요한 인위적인 사고 흐름을 몇 개 생각해 볼 수 있음: `branching ('on second thought...')`, `backtracking ('wait, but...')`, `continuing ('therefore...')`. `encapsulating ('in summary...')`
+- 개념상 next sentence prediction이나 여타 다른 방법들보다, 한 turn마다 생각을 먼저 하고 여러 문장을 생성한다는데서 더 인간의 reasoning에 가까워보임. 근데 그게 thought token을 생성함으로서 가능한건지는 잘 모르겠다. 그냥 diffusion과 같은 방법으로 생각 벡터를 죽 transforation시켜서 (multi-hop reasoning) preplan을 만들고, 그걸 매 token prediction마다 먹여주는게 더 직관적임.
