@@ -47,3 +47,4 @@
 - 인간의 reasoning 방법과 적은 데이터로도 reasoning을 하는 과정을 생각해보면 다른 무언가가 필요해보이는데..
 - self-train. 숨에서 자기 머릿속을 들여다보듯이.
 - 우주도 가만히 두면 알아서 지성체들이 등장하더라. 여기서 오는 완결성
+- synthetic data만으로 extrapolation이 가능한가.
