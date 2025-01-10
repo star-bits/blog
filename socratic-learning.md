@@ -40,5 +40,5 @@
 ## 생각
 - circle of scholars language game을 한다면 각각의 agent에게 어떤 다른 특성을 부여해 줘야 할까.
 - 내부적으로 로직 계산에 파이썬을 사용할 수 있게 해서 현실에 그나마 ground시킬 수 있을 것.
-- latent vector를 활용하거나, latent diffusion을 적용하거나 하는 방법 없이 그냥 data distribution을 잘 생성하도록 감독하는 것 만으로 next-token predictor가 A-Superhuman-I가 가능할까? synthetic data만으로 extrapolation이 가능한가?
+- latent vector를 활용하거나, latent diffusion을 적용하거나 하는 방법 없이 그냥 data distribution을 잘 생성하도록 감독하는 것 만으로 next-token predictor가 A-Superhuman-I가 가능할까? synthetic data만으로 extrapolation이 가능한가?
 - closed-system에서 지성이 발전하는 걸 지켜본다면 마치 closed-system인 지구에서 인간들이 서로의 상호작용만으로 지성을 발전시켜나가는 것을 보는 것 같겠군. 우주도 가만히 두면 알아서 지성체들이 등장하더라.
