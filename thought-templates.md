@@ -1,4 +1,4 @@
-# Thought Buffer to store thoughts
+# Thought Template Augmented Generation
 - [Buffer of Thoughts: Thought-Augmented Reasoning with Large Language Models](https://arxiv.org/pdf/2406.04271)
 - [YangLing0818/buffer-of-thought-llm](https://github.com/YangLing0818/buffer-of-thought-llm) (official repository)
 
