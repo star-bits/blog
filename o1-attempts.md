@@ -6,3 +6,4 @@
 - [DeepSeek-R1, a transparent challenger to OpenAI o1](https://www.deeplearning.ai/the-batch/deepseek-r1-a-transparent-challenger-to-openai-o1/) (DeepSeek)
 - [Scaling of Search and Learning: A Roadmap to Reproduce o1 from Reinforcement Learning Perspective](https://arxiv.org/pdf/2412.14135) (Fudan University)
 - [Learning to Reason with LLMs](https://openai.com/index/learning-to-reason-with-llms/) (OpenAI)
+- [OpenAI o1 System Card](https://arxiv.org/pdf/2412.16720)
