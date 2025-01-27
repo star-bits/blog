@@ -63,3 +63,6 @@
 
 ## related works
 - 
+
+## lessons
+- producing tokens keeps model alive..
