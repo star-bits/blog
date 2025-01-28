@@ -9,6 +9,8 @@
 
 ## zero-shot
 - 바로 doc 생성. 이후 answer 생성. --> 프롬프트 뭐 썼을까 --> inprompts/regular.jsonl
+- 기존: a_hat = argmax p(a|q,theta)
+- genread: p(a|q) = sum_i p(a|d_i, q) p(d_i|q), where d_hat = argmax p_hat(d)
 
 ## supervised - clustering
 - prompt --> inprompts/cluster.jsonl
@@ -18,7 +20,7 @@
 - 임베딩, k-means clustering, n개 샘플
 - FiD를 train했다는데 이게 무슨 말? 파인튜닝? 왜 굳이?
 - 그리고 인코딩 하고 concat하고 디코딩 했다는데 왜??
-- 이 인코딩 모델 뭐 씀 ~~??~~ 12,288 차원이라는데 ~~?~~
+- 이 인코딩 모델 뭐 씀 ~~??~~ 12,288 차원이라는데 ~~?~~ (GPT-3)
 - ```python
   # inference.py
   def run_embeddings(input_text, engine='text-similarity-davinci-001'):
@@ -41,7 +43,7 @@
 - factchecking
   - FEVER, FM2
   - using.. accuracy?
-- open-domain dialogue
+- open-domain dialogue systems
   - WoW
   - F1, Rogue-L
 
@@ -55,6 +57,7 @@
 - FiD?? FiD 활용할 때 T5 썼다 함. FiD는 small model 이라는데 파라미터 수 얼마?
 - DPR?? (BM25같은거임? BM25, DPR, ORQA이 information retrieval의 대표격인가본데)
 
+
 ## limitations
 - hallucination
 - explainability
@@ -62,7 +65,11 @@
 - knowledge db를 llm 친화적으로 internalize 하는게 좋다는 뜻일까. 
 
 ## related works
-- 
+- DPR-FiD?
+- retrieve-then-read: DPR, RAG, FiD..?
+- context doc generator: GENRE (NER 이용), SEAL, LAMA
+- Dense Passage Retrieval. RAG에서 retrieval 부분만 있는거임?
+- FiD. question+passage를 인코딩 하고 concat하고 다시 디코딩?? 많은 passage들을 효과적으로 사용.
 
 ## lessons
 - producing tokens keeps model alive..
