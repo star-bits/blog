@@ -42,7 +42,7 @@
   - using EM, Recall@K
 - factchecking
   - FEVER, FM2
-  - using.. accuracy?
+  - using.. accuracy? ACC. 
 - open-domain dialogue systems
   - WoW
   - F1, Rogue-L
@@ -57,7 +57,6 @@
 - FiD?? FiD 활용할 때 T5 썼다 함. FiD는 small model 이라는데 파라미터 수 얼마?
 - DPR?? (BM25같은거임? BM25, DPR, ORQA이 information retrieval의 대표격인가본데)
 
-
 ## limitations
 - hallucination
 - explainability
@@ -65,7 +64,7 @@
 - knowledge db를 llm 친화적으로 internalize 하는게 좋다는 뜻일까. 
 
 ## related works
-- DPR-FiD?
+- DPR-FiD? --> a retrieve-then-read pipeline
 - retrieve-then-read: DPR, RAG, FiD..?
 - context doc generator: GENRE (NER 이용), SEAL, LAMA
 - Dense Passage Retrieval. RAG에서 retrieval 부분만 있는거임?
