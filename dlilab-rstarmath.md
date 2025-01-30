@@ -1,14 +1,13 @@
 ## rStar-Math의 핵심 아이디어
-- python
-- Process PREFERENCE Model
+- code-augmented CoT (verified reasoning traces)
+  - code execution verification
+- two models: policy model & reward model (Process PREFERENCE Model)
 - self-evolution
-
-## Code-augmented
-- code execution verification
 
 ## Process Preference Model
 - contrastive loss, preference pairs, pairwise ranking loss.
-- based on q-value
+- based on q-value (averate reward)
+- conventional method: directly use Q-values as reward labels, which are inherently noisy and imprecise.
 - PRM, ORM
 - fig 5. boost in perf using ppm.
 - llm에서 헤드만 갈아끼워서 [-1, 1] range 예측
@@ -23,7 +22,8 @@
 ## MCTS
 - child nodes per a node. expansion
 - rollout. simulation til terminal (or depth limit). reward 1 or -1. backpropagation up to root.
-- UTC
+- UCT. exploitation + exploration.
+- PPM directly predicts a non-zero initial q value.
 
 ## Related works - CoT
 - reasoning trace
@@ -38,10 +38,12 @@
 - AIME
 - problems are augmented using gpt-4
 
-
 ## 추가적으로 알아본 코드
 
 ## 추가적으로 알아본 논문
 
-
-- emergence. self-reflection, self-correction
+## Findings
+- emergence. intrinsic self-reflection capability.
+- recognizes the mistake and self-corrects.
+- MCTS-driven deep thinking.
+- PPM becomes the key determinant of the upper performance limit.
