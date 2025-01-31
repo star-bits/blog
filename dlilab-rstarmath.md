@@ -26,22 +26,15 @@
 - UCT. exploitation + exploration.
 - PPM directly predicts a non-zero initial q value.
 
-## Related works - CoT
-- reasoning trace
-
-## Related works - Process Supervision
-- process reward
-
-## Related works - Test-time compute
+## Related works 
+- CoT. reasoning trace
+- Process Supervision. process reward
+- Test-time compute
 
 ## datasets
 - MATH
 - AIME
 - problems are augmented using gpt-4
-
-## 추가적으로 알아본 코드
-
-## 추가적으로 알아본 논문
 
 ## Findings
 - emergence. intrinsic self-reflection capability.
