@@ -18,6 +18,7 @@
 - round 2: SLM. (rollout: 16, candidates: 6, depth: 16). O(rollout * candidate# * depth)
 - round 3: PPM-augmented MCTS.
 - round 4: unsolved after 16 rollouts -> 64 -> 128 (candidates: 16)
+- sft data. top2 trajectories with the highest average q-value
 
 ## MCTS
 - child nodes per a node. expansion
