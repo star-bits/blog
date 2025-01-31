@@ -3,13 +3,13 @@
 - 인코딩 후 K-means clustering을 통한 semantically 다양한 few-shot examples
 
 ## Retrieval의 문제점
-- In chunks. May contain noisy information irrelevant to the question. (Chunk size 문제)
-- Representations of questions and documents obtained independently. 임베딩 모델 다른거 씀. (two-tower dense retrieval models, only shallow interactions captured.)
-- 다 인코딩 해서 임베딩 된 걸 저장해야 됨.
+- Chunks may contain noisy information irrelevant to the question. (+ Chunk size 문제)
+- Representations of questions and documents obtained independently. 임베딩 모델 두개. (Two-tower dense retrieval models) Only shallow interactions captured.
+- 청크와 임베딩을 어딘가에 저장해야.
 
 ## 직접 생성하면 뭐가 좋은가
 - retrieve된 document들보다 오히려 generate된 contextual document들이 더 필요한 정보를 갖고 있더라.
-- by token-level cross-attention between all the question and document contents.
+- token-level cross-attention between all the question and document contents.
 - 바로 정답 생성하는 것 보다 훨씬 낫다.
 - 문서 생성은 pretraining때 많이 해본 것.
 
@@ -17,8 +17,8 @@
 - 전통적 IR (sparse retrievers): BM25, TF-IDF
 - 임베딩 사용 (dense retrievers): DPR, ORQA
 - DPR (Dense Passage Retrieval): two separate encoders, contrastive loss
-- DPR-FiD, a retrieve-then-generate pipeline
 - FiD (Fusion-in-Decoder): seq2seq transformer. question + passage를 인코딩 하고 concat하고 다시 디코딩. 많은 passage들을 효과적으로 사용.
+- DPR-FiD, a retrieve-then-generate pipeline
 - identifier strings (e.g. NER) 이용
 - intermediate reasoning steps를 먼저 생성하자 (CoT. instruction and human written demonstration)
 - leveraging model generated text to guide further generation 공통점
@@ -79,7 +79,8 @@
 - hallucination
 - explainability
 - domain knowledge. 기업용 챗봇 어려움
-- knowledge db를 llm 친화적으로 internalize 하는게 좋다는 뜻일까. 
+- knowledge db를 llm 친화적으로 internalize 하는게 좋다는 뜻일까.
+- chunk어떻게?
 
 ## lessons
 - producing tokens keeps model alive..
